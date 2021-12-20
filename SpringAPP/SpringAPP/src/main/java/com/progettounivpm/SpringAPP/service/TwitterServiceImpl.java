@@ -23,14 +23,16 @@ import com.progettounivpm.SpringAPP.model.Tweet;
 // deve implementare tutti i metodi usati sull'interfaccia che eredita
 public class TwitterServiceImpl implements TwitterService{
 	
+	
 	private String url= "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=";
-	private String ApiKey = ""; // TODO: Da implementare poi quando sostituiremo il url
+	//private String ApiKey = ""; // TODO: Da implementare poi quando sostituiremo il url
 	
 	@Override
-	public JSONObject getJSONTweets(String hashtag) throws IOException {
+	public JSONObject getJSONTweets(String hashtag,int count) throws IOException {
+		
 		JSONObject tweets = null; //oggetto locale che servirà per il return
 		
-		URLConnection openConnection= new URL( url + hashtag ).openConnection(); // Open connection crea la connessione con il URL indicato
+		URLConnection openConnection= new URL( url + hashtag + "&count=" + count).openConnection(); // Open connection crea la connessione con il URL indicato
 		/*POSSIBILE IMPLEMENTAZIONE:
 		 *	int count; //stabilisce quanti tweet cercare
 		 *  new URL( url + hastag + "&count=" + conunt ).openConnection()
