@@ -15,22 +15,30 @@ import com.progettounivpm.SpringAPP.service.TwitterServiceImpl;
 
 @RestController
 public class Controller {
+	
+	private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	public TwitterServiceImpl routh1;
+	public JSONObject oggetto;
 	
 	@GetMapping(value= "/tweet/get")
 	public ResponseEntity<Object> getTweetInfo( 
 			@RequestParam ( name= "hashtag", defaultValue= "univpm") String hashtag,
 			@RequestParam ( name= "count", defaultValue = "5" )int count)
-			
-			 throws IOException{
-	routh1= new TwitterServiceImpl();
-	return new ResponseEntity<Object>(routh1.getJSONTweets(hashtag,count),HttpStatus.OK);
-	
-	
-	
-	
-		
+			throws IOException{
+		routh1= new TwitterServiceImpl();
+		oggetto = routh1.getJSONTweets(hashtag,count);
+		if (oggetto == null)
+			return new ResponseEntity<Object>("ERRORE, chiamata inesistente",HttpStatus.OK);
+		else
+			return new ResponseEntity<Object>(oggetto,HttpStatus.OK);
 	}
+	
+	@GetMapping(value= "/tweet/stampa")
+	public ResponseEntity<Object> stampatweets(){
+		tweets = routh1.getTweetInfo(oggetto);
+		return new ResponseEntity<Object>(this.tweets,HttpStatus.OK);
+	}
+	
 	
 	
 	
