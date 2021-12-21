@@ -1,5 +1,5 @@
 package com.progettounivpm.SpringAPP.statistics;
 
-public class Statistic {
+public interface Statistic {
 
 }
