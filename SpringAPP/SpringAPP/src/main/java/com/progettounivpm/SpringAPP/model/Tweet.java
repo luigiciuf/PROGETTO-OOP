@@ -20,12 +20,24 @@ public class Tweet {
 	public DataOra getCreated_at() {
 		return created_at;
 	}
+	public String getCreated_at_Text() {
+		return created_at.toString();
+	}
 	public void setCreated_at(String created_at) {
 		this.created_at = new DataOra(created_at);
 	}
 	public ArrayList<String> getHashtags() {
 		return hashtags;
 	}
+	public String getHashtagsText() {
+		String s = null;
+		for (String str: hashtags) {
+			if (str == null) s = str;
+			else s = s + ", " + str;
+		}
+		return s;	
+		}
+		
 	public void setHashtags(ArrayList<String> hashtags) {
 		this.hashtags = hashtags;
 	}
@@ -55,6 +67,9 @@ public class Tweet {
 	}
 	public DataOra getCreated_at_user() {
 		return created_at_user;
+	}
+	public String getCreated_at_user_Text() {
+		return created_at_user.toString();
 	}
 	public void setCreated_at_user(String created_at_user) {
 		this.created_at_user = new DataOra(created_at_user);
