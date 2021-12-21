@@ -8,11 +8,12 @@ public class DataOra {
 	// e poi dei possibili cast
 	
 	private String giornosettimana;
-	private String mese;
 	private int giorno;
+	private String mese;
+	private int anno;
 	private int ora;
 	private int minuti;
-	private int anno;
+	
 
 	public DataOra(String str) {
 		String s [] = str.split(" ");

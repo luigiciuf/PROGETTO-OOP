@@ -32,7 +32,7 @@ public class Tweet {
 	public String getHashtagsText() {
 		String s = null;
 		for (String str: hashtags) {
-			if (str == null) s = str;
+			if (s == null) s = str;
 			else s = s + ", " + str;
 		}
 		return s;	
