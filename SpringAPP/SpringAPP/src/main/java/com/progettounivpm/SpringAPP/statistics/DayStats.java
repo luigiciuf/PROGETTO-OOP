@@ -36,7 +36,7 @@ public class DayStats implements Statistic {
 
 	@Override
 	public JSONObject Statistic() {
-		Float Percentage;
+		
 		DataOra data;
 		int day1=0,day2=0,day3=0,day4=0,day5=0,day6=0,day7=0;
 		int nulli=0;
