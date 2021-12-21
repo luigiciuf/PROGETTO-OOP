@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.progettounivpm.SpringAPP.model.Tweet;
 import com.progettounivpm.SpringAPP.service.TwitterServiceImpl;
+import com.progettounivpm.SpringAPP.statistics.DayStats;
 
 @RestController
 public class Controller {
@@ -39,6 +40,25 @@ public class Controller {
 		return new ResponseEntity<Object>(this.tweets,HttpStatus.OK);
 	}
 	
+	
+	
+	
+	
+	@GetMapping(value= "/tweet/daystats")
+	public ResponseEntity<Object> stampastats(){
+		DayStats statistiche= new DayStats(tweets);
+		
+		return new ResponseEntity<Object>(statistiche.Statistic(),HttpStatus.OK);
+		
+		
+		
+		
+		
+
+	
+
+		
+	}
 	
 	
 	
