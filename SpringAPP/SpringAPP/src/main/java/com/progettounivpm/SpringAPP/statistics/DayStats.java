@@ -11,27 +11,11 @@ public class DayStats implements Statistic {
 	
 	private ArrayList<Tweet> tweets;
 
-
-	
-	
-	
-
-	
-	
-	
 	
 	public DayStats(ArrayList<Tweet> tweets) {
 		
 		this.tweets = tweets;
 	}
-
-
-
-
-
-
-
-
 
 
 	@Override
