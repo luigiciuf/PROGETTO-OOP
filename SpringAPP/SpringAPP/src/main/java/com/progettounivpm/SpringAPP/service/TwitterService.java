@@ -7,15 +7,14 @@ import org.json.simple.JSONObject;
 import com.progettounivpm.SpringAPP.model.Tweet;
 
 
-// INTERFACCIA CHE DEFINISCE (STANDARDIZZA) I METODI CHE USEREMO NELLE CLASSI CHE LA EREDITERANNO 
+// INTERFACCIA CHE DEFINISCE I METODI CHE USEREMO NELLE CLASSI CHE LA EREDITERANNO 
  
 public interface TwitterService {
 	  
-	
-	// dichiarazione del metodo getJSONTweets che effettuer√† la chiamata URL (con i rispettivi parametri che passiamo) restituendo un JSONObkect 
+	// dichiarazione del metodo getJSONTweets che effettuer‡† la chiamata URL (con i rispettivi parametri che passiamo) restituendo un JSONObject 
 	public abstract JSONObject getJSONTweets(String hashtag,int count) throws IOException;
-	// dichiarazione del metodo che fa il parsing del json e restituisce un array di tipo Tweet
+	// dichiarazione del metodo che fa il parsing del JSONObject e restituisce un array di tipo Tweet
 	public abstract ArrayList<Tweet> getTweetInfo(JSONObject tweets);
-	// dichiarazione del metodo toJSON (di tipo JSONObject) che fornisce L'OUTPUT DEL NOSTRO PROGRAMMA
-	public abstract JSONObject toJSON(); 
+	// dichiarazione del metodo toJSON che converte l'array con i nostri tweet in un JSONObject
+	public abstract JSONObject toJSON(ArrayList<Tweet> tweets); 
 }

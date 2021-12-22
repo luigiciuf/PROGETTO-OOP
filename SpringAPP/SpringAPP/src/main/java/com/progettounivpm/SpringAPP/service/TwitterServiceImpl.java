@@ -8,12 +8,12 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Map;
-import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+//import org.json.simple.parser.ParseException;
+
 import org.springframework.core.codec.AbstractDataBufferDecoder;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class TwitterServiceImpl implements TwitterService{
 	@Override
 	public JSONObject getJSONTweets(String hashtag,int count) throws IOException {
 		
-		JSONObject tweets = null; //oggetto locale che servir√† per il return
+		JSONObject tweets = null; //oggetto locale che servir‡†per il return
 		
 		URLConnection openConnection= new URL( url + hashtag + "&count=" + count).openConnection(); // Open connection crea la connessione con il URL indicato
 		/*POSSIBILE IMPLEMENTAZIONE:
@@ -38,7 +38,7 @@ public class TwitterServiceImpl implements TwitterService{
 		 *  new URL( url + hastag + "&count=" + conunt ).openConnection()
 		 */
 		
-		// Volendo √® possibile ridefinire openConnection come lettura di un file json o txt da un percorso stabilito
+		// Volendo Ë possibile ridefinire openConnection come lettura di un file json o txt da un percorso stabilito
 		
 		InputStream in = openConnection.getInputStream();  //legge la connessione creando un oggetto in di tipo InputStream
 		String data= "";
@@ -53,13 +53,11 @@ public class TwitterServiceImpl implements TwitterService{
 			// dopo aver salvato tutto quello letto su data facciamo un cast di tipo JSONObject e salviamo sull'oggetto che restituiremo
 			tweets = (JSONObject)JSONValue.parseWithException(data);	
 		}
-		//******************************************************************************
-		// CI DOVREBBE ESSERE ANCHE:
-		//catch (IOException | ParseException e) {
-		// e.printStackTrace();
-		//}
-		// MA DA ERRORE
-
+		/* TODO: ERRORE
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
+		*/
 		catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,7 +95,7 @@ public class TwitterServiceImpl implements TwitterService{
 				x.setIsolanguage_code((String)metadata.get("iso_language_code"));  
 			}
 			// TODO: Preleviamo in_reply
-			x.setIn_reply("");
+			x.setIn_reply(""); 
 			// Entriamo dentro user e Preleviamo location, created_at_user, statuses_count
 			JSONObject user= (JSONObject)temp.get("user"); {
 				x.setLocation((String)user.get("location"));
@@ -111,8 +109,26 @@ public class TwitterServiceImpl implements TwitterService{
 	}
 	
 	@Override
-	public JSONObject toJSON() {
-		return null;
-	}
+	public JSONObject toJSON(ArrayList<Tweet> tweets) {
+		
+		JSONObject oggettoFiltrato = new JSONObject();
+		JSONArray arrayTweets = new JSONArray();
+		
+		for (Tweet t: tweets) {
+			JSONObject tweet = new JSONObject();
+			
+			tweet.put("created_at",t.getCreated_at_Text());
+			tweet.put("hastags",t.getHashtagsText());
+			tweet.put("isolanguage_code",t.getIsolanguage_code());
+			tweet.put("result_type",t.getResult_type());
+			tweet.put("in_reply",t.getIn_reply());
+			tweet.put("created_at_user",t.getCreated_at_user());
+			tweet.put("statuses_count",t.getStatuses_count());
+			
+			arrayTweets.add(tweet);
+		}
+		oggettoFiltrato.put("tweets", arrayTweets);
+		return oggettoFiltrato;	
+	}	
 
 }
