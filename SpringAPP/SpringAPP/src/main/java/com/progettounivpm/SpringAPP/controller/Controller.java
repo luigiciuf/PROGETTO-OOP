@@ -37,7 +37,7 @@ public class Controller {
 			return new ResponseEntity<Object>("ERRORE, chiamata inesistente",HttpStatus.OK);
 		else
 			tweets = downloadTweets.getTweetInfo(allTweetsData);
-			return new ResponseEntity<Object>(this.tweets,HttpStatus.OK);
+			return new ResponseEntity<Object>(downloadTweets.toJSON(tweets),HttpStatus.OK);
 	}
 	
 	
