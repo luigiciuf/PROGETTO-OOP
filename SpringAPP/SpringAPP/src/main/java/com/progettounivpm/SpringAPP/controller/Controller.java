@@ -2,6 +2,7 @@ package com.progettounivpm.SpringAPP.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import com.progettounivpm.SpringAPP.filter.TemporalPeriodFilter;
 import com.progettounivpm.SpringAPP.model.Tweet;
 import com.progettounivpm.SpringAPP.service.TwitterServiceImpl;
 import com.progettounivpm.SpringAPP.statistics.DayStats;
+import com.progettounivpm.SpringAPP.statistics.HashtagsStats;
 import com.progettounivpm.SpringAPP.statistics.TimeStats;
 
 @RestController
@@ -74,6 +76,13 @@ public class Controller {
 		DayStats statistiche= new DayStats(tweets);
 		
 		return new ResponseEntity<Object>(statistiche.Statistic(),HttpStatus.OK);
+	}
+	
+	@GetMapping(value= "/tweet/hashtagstats")
+	public ResponseEntity<Object> hs(){
+		HashtagsStats statistiche= new HashtagsStats(tweets);
+		return new ResponseEntity<Object>(statistiche.Statistic1(), HttpStatus.OK);
+		
 	}
 		
 		
