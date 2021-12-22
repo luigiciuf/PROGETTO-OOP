@@ -41,9 +41,9 @@ public class TimeStats implements Statistic{
 			
 		}
 		obj.put("Tweet analizzati nelle 3 fasce orarie", tweets.size());
-		obj.put("Fascia 1 ( 09-14) : ", Fascia1);
-		obj.put("Fascia 2 ( 14-20) : ", Fascia2);
-		obj.put("Fascia 3 ( 21-04) : ", Fascia3);
+		obj.put("Fascia 1 ( 09-14) : ", Fascia1*100/tweets.size()+"%");
+		obj.put("Fascia 2 ( 14-20) : ", Fascia2*100/tweets.size()+"%");
+		obj.put("Fascia 3 ( 21-04) : ", Fascia3*100/tweets.size()+"%");
 		
 		return obj;
 	}
