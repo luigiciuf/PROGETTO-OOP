@@ -15,6 +15,7 @@ import com.progettounivpm.SpringAPP.filter.TemporalPeriodFilter;
 import com.progettounivpm.SpringAPP.model.Tweet;
 import com.progettounivpm.SpringAPP.service.TwitterServiceImpl;
 import com.progettounivpm.SpringAPP.statistics.DayStats;
+import com.progettounivpm.SpringAPP.statistics.TimeStats;
 
 @RestController
 public class Controller {
@@ -42,12 +43,6 @@ public class Controller {
 		return new ResponseEntity<Object>(this.tweets,HttpStatus.OK);
 	}
 	
-	@GetMapping(value= "/tweet/daystats")
-	public ResponseEntity<Object> stampastats(){
-		DayStats statistiche= new DayStats(tweets);
-		return new ResponseEntity<Object>(statistiche.Statistic(),HttpStatus.OK);
-	}
-	
 	@GetMapping(value= "/hastag_filter")
 	public ResponseEntity<Object> filtroHashtag(
 			// inserire eccezione se non è stato inserito il parametro
@@ -55,7 +50,7 @@ public class Controller {
 		HashtagFilter hashtag_filter = new HashtagFilter(hashtag, tweets);
 		return new ResponseEntity<Object>(hashtag_filter.filter(),HttpStatus.OK);
 	}
-
+	
 	@GetMapping(value= "/tweet/day_filter")
 	public ResponseEntity<Object> filter(
 			//TODO: defaultValue today
@@ -65,6 +60,44 @@ public class Controller {
 		TemporalPeriodFilter day_filter = new TemporalPeriodFilter(tweets,day,month,year);
 		return new ResponseEntity<Object>(day_filter.filter(),HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/tweet/timestats")
+	public ResponseEntity<Object> timestats(){
+		TimeStats time= new TimeStats(tweets);
+		return new ResponseEntity<Object>(time.Statistic(),HttpStatus.OK);
+		
+		
+	}
+	
+	@GetMapping(value= "/tweet/daystats")
+	public ResponseEntity<Object> stampastats(){
+		DayStats statistiche= new DayStats(tweets);
+		
+		return new ResponseEntity<Object>(statistiche.Statistic(),HttpStatus.OK);
+	}
+		
+		
+	
+	
+		
+		
 
+	
+
+		
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+		
 
 }
