@@ -1,6 +1,7 @@
 package com.progettounivpm.SpringAPP.statistics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 
@@ -46,6 +47,13 @@ public class TimeStats implements Statistic{
 		obj.put("Fascia 3 ( 21-04) : ", Fascia3*100/tweets.size()+"%");
 		
 		return obj;
+	}
+
+
+	@Override
+	public HashMap Statistic1() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
