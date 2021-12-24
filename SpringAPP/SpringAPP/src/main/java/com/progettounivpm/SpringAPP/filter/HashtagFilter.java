@@ -33,7 +33,7 @@ public class HashtagFilter implements Filter{
 					tweet.put("isolanguage_code",t.getIsolanguage_code());
 					tweet.put("result_type",t.getResult_type());
 					tweet.put("in_reply",t.getIn_reply());
-					tweet.put("created_at_user",t.getCreated_at_user());
+					tweet.put("created_at_user",t.getCreated_at_user_Text());
 					tweet.put("statuses_count",t.getStatuses_count());
 					//poi aggiunge all'array contenente tutti i tweet filtrati
 					arrayTweets.add(tweet);
