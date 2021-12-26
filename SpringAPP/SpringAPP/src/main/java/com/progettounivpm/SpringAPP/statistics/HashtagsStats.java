@@ -35,19 +35,27 @@ public class HashtagsStats implements Statistic {
 		for ( Tweet t: hstats) {
 			ArrayList<String> hashtags= t.getHashtags();	
 			for(String h: hashtags) {
+				//se l'HashMap è ancora vuota inseriamo il primo elemento , altrimetni non farebbe nessuna iterazione
+				// del ciclo successvo
 				if(temp.size()==0)
 					temp.put(h, 1);
 				else {
-					int j=1;
+					int j=1; // usiamo j per verificare la posizone dell'HAshMap nel ciclo successivo 
 					for(String i:temp.keySet()) {
+						// se il keyvalue j-esimo dell'hashmap è uguale all' hashtag h , incrementa il valore
+						
 						if(h.equals(i)) {
 							temp.replace(h,temp.get(i)+1);
 						}
+						//altrimenti se abbiamo ciclato per tutta l'hashmap  aggiunge l'hashtag in fondo
+						
 						else if ( j==temp.size()) {
 							temp.put(h, 1);
-							break;
+							break; // inserito per securezza per evitare che al prossimo controllo del for non consideri anhc el'incremento
+							
 						}
 						j++;
+						// incrementiamo j per verificare succesivamente se siamo arrivati in fondo a l'hashmap
 					}
 				}
 			}
