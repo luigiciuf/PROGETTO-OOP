@@ -52,6 +52,8 @@ public class HashtagsStats implements Statistic {
 				}
 			}
 		}
+		temp.put("Tweet scaricati" ,hstats.size());
+		
 		return temp;
 	}
 }
