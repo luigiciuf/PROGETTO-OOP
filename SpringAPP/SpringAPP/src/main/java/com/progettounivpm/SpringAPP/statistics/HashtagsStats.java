@@ -2,6 +2,7 @@ package com.progettounivpm.SpringAPP.statistics;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -33,24 +34,29 @@ public class HashtagsStats implements Statistic {
 		
 		for ( Tweet t: hstats) {
 			ArrayList<String> hashtags= t.getHashtags();	
-			for (String h: hashtags) {
-				int j=0; 
-				for(String i : temp.keySet())
-				{
-					if (h.equals(i)) 
-						temp.replace(h, temp.get(i)+1);												
-					if(j==temp.size())
-						temp.put(h,1);
-					j++;
+			for(String h: hashtags) {
+				if(temp.size()==0)
+					temp.put(h, 1);
+				else {
+					int j=1;
+					for(String i:temp.keySet()) {
+						if(h.equals(i)) {
+							temp.replace(h,temp.get(i)+1);
+						}
+						else if ( j==temp.size()) {
+							temp.put(h, 1);
+							break;
+						}
+						j++;
+					}
 				}
-					
 			}
 		}
 		return temp;
-			
 	}
+}
 
-}		
+		
 			
 			
 			
