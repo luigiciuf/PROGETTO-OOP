@@ -2,7 +2,6 @@ package com.progettounivpm.SpringAPP.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.progettounivpm.SpringAPP.exception.TweetsIsEmptyException;
 import com.progettounivpm.SpringAPP.filter.HashtagFilter;
 import com.progettounivpm.SpringAPP.filter.TemporalPeriodFilter;
 import com.progettounivpm.SpringAPP.model.Tweet;
@@ -33,16 +33,16 @@ public class Controller {
 			throws IOException{
 		TwitterServiceImpl downloadTweets = new TwitterServiceImpl();
 		allTweetsData = downloadTweets.getJSONTweets(hashtag,count);
-		if (allTweetsData == null)
-			return new ResponseEntity<Object>("ERRORE, chiamata inesistente",HttpStatus.OK);
+		tweets = downloadTweets.getTweetInfo(allTweetsData);
+		if (tweets.size() == 0)
+			return new ResponseEntity<Object>("ERRORE, hashtag inesistente. Effettuare nuovamente la chiamata.",HttpStatus.OK);
 		else
-			tweets = downloadTweets.getTweetInfo(allTweetsData);
 			return new ResponseEntity<Object>(downloadTweets.toJSON(tweets),HttpStatus.OK);
 	}
 	
 	
-	@GetMapping(value= "/hastag_filter")
-	public ResponseEntity<Object> filtroHashtag(
+	@GetMapping(value= "/hastag_filter") 
+	public ResponseEntity<Object> filtroHashtag (
 			// inserire eccezione se non è stato inserito il parametro
 			@RequestParam (name= "hashtag") String hashtag){
 		HashtagFilter hashtag_filter = new HashtagFilter(hashtag, tweets);
@@ -76,29 +76,6 @@ public class Controller {
 		HashtagsStats statistiche= new HashtagsStats(tweets);
 		return new ResponseEntity<Object>(statistiche.Statistic1(), HttpStatus.OK);	
 	}
-		
-		
-	
-	
-		
-		
-
-	
-
-		
-	
-	
-	
-	
-
-	
-	
-	
-	
-
-	
-	
-	
-		
+				
 
 }
