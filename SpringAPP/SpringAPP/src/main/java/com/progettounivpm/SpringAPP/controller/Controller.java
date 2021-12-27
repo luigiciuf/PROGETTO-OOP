@@ -40,11 +40,11 @@ public class Controller {
 			return new ResponseEntity<Object>(downloadTweets.toJSON(tweets),HttpStatus.OK);
 	}
 	
-	
 	@GetMapping(value= "/hastag_filter") 
 	public ResponseEntity<Object> filtroHashtag (
 			// inserire eccezione se non è stato inserito il parametro
-			@RequestParam (name= "hashtag") String hashtag){
+			@RequestParam (name= "hashtag") String hashtag) throws TweetsIsEmptyException{
+		TweetsisEmpty(tweets);
 		HashtagFilter hashtag_filter = new HashtagFilter(hashtag, tweets);
 		return new ResponseEntity<Object>(hashtag_filter.filter(),HttpStatus.OK);
 	}
@@ -54,27 +54,37 @@ public class Controller {
 			//TODO: defaultValue today
 			@RequestParam (name= "day") int day,
 			@RequestParam (name= "month")String month,
-			@RequestParam (name= "year")int year){
+			@RequestParam (name= "year")int year) throws TweetsIsEmptyException{
+		TweetsisEmpty(tweets);
 		TemporalPeriodFilter day_filter = new TemporalPeriodFilter(tweets,day,month,year);
 		return new ResponseEntity<Object>(day_filter.filter(),HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/timestats")
-	public ResponseEntity<Object> timestats(){
+	public ResponseEntity<Object> timestats() throws TweetsIsEmptyException{
+		TweetsisEmpty(tweets);
 		TimeStats time= new TimeStats(tweets);
 		return new ResponseEntity<Object>(time.Statistic(),HttpStatus.OK);	
 	}
 	
 	@GetMapping(value= "/tweet/daystats")
-	public ResponseEntity<Object> stampastats(){
+	public ResponseEntity<Object> stampastats() throws TweetsIsEmptyException{
+		TweetsisEmpty(tweets);
 		DayStats statistiche= new DayStats(tweets);
 		return new ResponseEntity<Object>(statistiche.Statistic(),HttpStatus.OK);
 	}
 	
 	@GetMapping(value= "/tweet/hashtagstats")
-	public ResponseEntity<Object> hs(){
+	public ResponseEntity<Object> hs() throws TweetsIsEmptyException{
+		TweetsisEmpty(tweets);
 		HashtagsStats statistiche= new HashtagsStats(tweets);
 		return new ResponseEntity<Object>(statistiche.Statistic1(), HttpStatus.OK);	
+	}
+	
+	//metodo ausiliario, che lancia un eccezione se la prima rotta non è stata lanciata
+	private static void TweetsisEmpty(ArrayList<Tweet> tweets) throws TweetsIsEmptyException {
+		if (tweets.isEmpty()==true) 
+			throw new TweetsIsEmptyException("Lanciare prima la rotta: /tweet/get");		
 	}
 				
 
