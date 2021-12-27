@@ -3,14 +3,14 @@ package com.progettounivpm.SpringAPP.model;
 import java.util.ArrayList;
 
 public class Tweet {
-	private DataOra created_at;				// Data creazione tweet
-	private ArrayList<String> hashtags;		// Elenco degli altri hastag nel tweet oltre quello indicato
-	private String isolanguage_code;		// Lingua del tweet
-	private String result_type; 			// Recente o in Evidenza, dovrebbero essere le due sezioni dove compaiono i tweet
-	private String in_reply;				// ANCORA NON è ASSEGNATO A NULLA VISTO CHE CI SONO MOLTI TIPI DI INREPLY, IN GENERALE INDICA SE E' UN TWEET IN RISPOSTA 
-	private String location;				// Luogo dove è stato pubblicato il tweet
-	private DataOra created_at_user;		// Data creazione profilo che ha pubblicato il tweet
-	private String statuses_count;			// Quanti altri tweet ha fatto l'utente che ha postato
+	private DataOra created_at;				// Data creazione tweet.
+	private ArrayList<String> hashtags;		// Elenco degli altri hastag nel tweet oltre quello indicato.
+	private String isolanguage_code;		// Lingua del tweet.
+	private String result_type; 			// Recente o in Evidenza, dovrebbero essere le due sezioni dove compaiono i tweet.
+	private Boolean in_reply;				// Se True si tratta di un tweet in risposta ad un altro. 
+	private String location;				// Luogo di pubblicazione del tweet.
+	private DataOra created_at_user;		// Data di creazione del profilo che ha pubblicato il tweet.
+	private String statuses_count;			// Quanti altri tweet ha fatto l'utente che ha postato il tweet.
 	
 	
 	public Tweet() {
@@ -53,11 +53,14 @@ public class Tweet {
 	public void setResult_type(String result_type) {
 		this.result_type = result_type;
 	}
-	public String getIn_reply() {
+	public boolean getIn_reply() {
 		return in_reply;
 	}
-	public void setIn_reply(String in_reply) {
-		this.in_reply = in_reply;
+	public void setIn_reply(String in_reply_to_status_id ) {
+		if (in_reply_to_status_id == null) 
+			this.in_reply = false;
+		else 
+			this.in_reply = true;
 	}
 	public String getLocation() {
 		return location;

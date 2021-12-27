@@ -8,7 +8,6 @@ import com.progettounivpm.SpringAPP.model.Tweet;
 
 
 // INTERFACCIA CHE DEFINISCE I METODI CHE USEREMO NELLE CLASSI CHE LA EREDITERANNO 
- 
 public interface TwitterService {
 	  
 	// dichiarazione del metodo getJSONTweets che effettuerà  la chiamata URL (con i rispettivi parametri che passiamo) restituendo un JSONObject 
