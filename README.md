@@ -14,7 +14,7 @@
 # INTRODUZIONE 
 Applicazione Java che utilizza le API di Twitter per fare ricerche in base ad un hashtag dato in input dall’utente, filtrare per giorno o hashtag e fare statistiche su giorno, hashtag e ora della pubblicazione dei tweets. Viene utilizzata un API fornitaci dal professore che si basa su cloud Amazon che ci ha permesso di evitare i lunghi tempi di autenticazione dell’API ufficiale di Tweeter permettendoci così di ottimizzare i tempi per la realizzazione dell’app.
 
-Lo scopo principale dell’applicazione è quello di ricercare tweet attraverso un hashtag dato in input dall’utente come parametro. È possibile inoltre decidere il numero di tweet visualizzabili dando un valore al parametro “count” altrimenti viene passato il valore di default che corrisponde a 5. È possibile come richiesto nelle specifiche del progetto filtrare i risultati ottenuti e visualizzare delle statistiche.
+Lo scopo principale dell’applicazione è quello di ricercare tweet attraverso un hashtag dato in input dall’utente come parametro. È possibile inoltre decidere il numero di tweet visualizzabili dando un valore al parametro “count” altrimenti viene passato il valore di default che corrisponde a 100 (che è anche il massimo valore utilizzabile). È possibile come richiesto nelle specifiche del progetto filtrare i risultati ottenuti e visualizzare delle statistiche.
 
 # FILTRI 
 GIORNO, MESE, ANNO: vengono restituiti i tweet postati in quella determinata data
@@ -32,11 +32,11 @@ http://localhost:8080
 
 NOTA: in caso di problemi per l’utilizzo della porta 8080 è possibile modificarla attraverso il file presente in src/main/resourses/application.proprerties andando a definire una porta che al momento non è utilizzata.
 # ROTTE
-1)	Get   /tweet/get  restituisce un JSONObject contenente tutte le informazioni relative ai dati di un tweet 
-2)	Get /tweet/hashtag_filter restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito 
-3)	Get /tweet/day_filter restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita
+1)	Get /tweet/get  restituisce un JSONObject contenente tutte le informazioni relative ai dati di un tweet 
+2)	Get /hastag_filter restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito 
+3)	Get /day_filter restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita
 4)	Get /tweet/timestats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata 
-5)	Get / tweet/daystats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
+5)	Get /tweet/daystats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
 6)	Get /tweet/hashtagstats restituisce una Hashmap contenente il numero di tweet contenenti l’hashtag inserito  e  calcola …..
 # PARAMETRI 
 1)	Hashtag ,count, di tipo stringa e int sono richiesti per una ricerca specifica altrimenti questi avranno il valore di defaul (univpm, 5).
