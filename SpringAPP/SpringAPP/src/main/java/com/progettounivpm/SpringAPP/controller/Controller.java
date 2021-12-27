@@ -82,10 +82,10 @@ public class Controller {
 		
 	}
 	
-	//metodo ausiliario, che lancia un eccezione se la prima rotta non � stata lanciata
+	//Metodo ausiliario, usato in tutte le rotte (eccetto la prima) per verificare se sono stati scaricati tweet.
 	private static void TweetsisEmpty(ArrayList<Tweet> tweets) throws TweetsIsEmptyException {
 		if (tweets.isEmpty()==true) 
-			throw new TweetsIsEmptyException("Lanciare prima la rotta: /tweet/get");		
+			throw new TweetsIsEmptyException();		
 	}
 				
 
