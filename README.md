@@ -8,7 +8,7 @@
 
 - [CONFIGURAZIONE](#CONFIGURAZIONE)
 - [ROTTE](#ROTTE) 
-- [PARAMETRI](#PARAMETRI )
+- [PARAMETRI](#PARAMETRI)
 
 
 # INTRODUZIONE 
@@ -27,7 +27,7 @@ HASHTAG: vengono restituiti i tweet che al loro interno contengono un altro hash
 # CONFIGURAZIONE 
 Per visionare il progetto è necessario clonare la repository situata su GitHub in locale oppure è possibile eseguire tramite terminale il seguente comando 
 “ git clone https://github.com/luigiciuf/PROGETTO-OOP”
-In questo modo è possibile lanciare il progetto come SpringBoot application da un IDE ( noi abbiamo utilizzato Eclipse) oppure da terminale e quando il programma sarà in esecuzione bisogna utilizzare un client ( ES. Postman)che ci permetterà di passare i vari parametri contattando l’indirizzo
+In questo modo è possibile lanciare il progetto come SpringBoot application da un IDE (noi abbiamo utilizzato Eclipse) oppure da terminale e quando il programma sarà in esecuzione bisogna utilizzare un client (ES. Postman) che ci permetterà di passare i vari parametri contattando l’indirizzo
 http://localhost:8080
 
 NOTA: in caso di problemi per l’utilizzo della porta 8080 è possibile modificarla attraverso il file presente in src/main/resourses/application.proprerties andando a definire una porta che al momento non è utilizzata.
@@ -39,7 +39,7 @@ NOTA: in caso di problemi per l’utilizzo della porta 8080 è possibile modific
 5)	Get / tweet/daystats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
 6)	Get /tweet/hashtagstats restituisce una Hashmap contenente il numero di tweet contenenti l’hashtag inserito  e  calcola …..
 # PARAMETRI 
-1)	Hashtag ,count, di tipo stringa e int sono richiesti per una ricerca specifica altrimenti questi avranno il valore di defaul ( univpm, 5).
+1)	Hashtag ,count, di tipo stringa e int sono richiesti per una ricerca specifica altrimenti questi avranno il valore di defaul (univpm, 5).
 2)	Hashtag, di tipo stringa è un parametro richiesto per poter filtrare i tweet 
 3)	Day, Mount, Year , tutti di tipo int sono parametri obbligatori da inserire per poter efettuare na ricerca filtratata dei tweet
 4)	Nessun parametro richiesto
