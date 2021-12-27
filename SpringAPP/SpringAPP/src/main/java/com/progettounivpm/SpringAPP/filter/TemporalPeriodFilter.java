@@ -13,6 +13,7 @@ public class TemporalPeriodFilter implements Filter{
 	private String mese;
 	private int anno;
 	
+	//Costruttore
 	public TemporalPeriodFilter(ArrayList<Tweet> tweets, int giorno, String mese, int anno) {
 		this.tweets = tweets;
 		this.giorno = giorno;
@@ -27,17 +28,8 @@ public class TemporalPeriodFilter implements Filter{
 		JSONArray arrayTweets = new JSONArray();
 		
 		for (Tweet t: tweets) {
-			JSONObject tweet = new JSONObject();
 			if ((t.getCreated_at().getGiorno()==giorno)&&(t.getCreated_at().getMese().equals(mese))&&(t.getCreated_at().getAnno()==anno)) {
-				tweet.put("created_at",t.getCreated_at_Text());
-				tweet.put("hastags",t.getHashtagsText());
-				tweet.put("isolanguage_code",t.getIsolanguage_code());
-				tweet.put("result_type",t.getResult_type());
-				tweet.put("in_reply",t.getIn_reply());
-				tweet.put("created_at_user",t.getCreated_at_user_Text());
-				tweet.put("statuses_count",t.getStatuses_count());
-				
-				arrayTweets.add(tweet);
+				arrayTweets.add(t.toJSONObject());
 			}
 			oggettoFiltrato.put("tweets posted on "+giorno+"/"+mese+"/"+anno, arrayTweets);
 		}
