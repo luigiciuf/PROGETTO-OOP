@@ -28,7 +28,7 @@ public class Controller {
 	@GetMapping(value= "/tweet/get")
 	public ResponseEntity<Object> getTweetInfo( 
 			@RequestParam (name= "hashtag", defaultValue= "univpm") String hashtag,
-			@RequestParam (name= "count", defaultValue = "50" )int count)
+			@RequestParam (name= "count", defaultValue = "100" )int count)
 			throws Exception{
 		TwitterServiceImpl downloadTweets = new TwitterServiceImpl();
 		allTweetsData = downloadTweets.getJSONTweets(hashtag,count);
@@ -48,7 +48,7 @@ public class Controller {
 		return new ResponseEntity<Object>(hashtag_filter.filter(),HttpStatus.OK);
 	}
 	
-	@GetMapping(value= "/tweet/day_filter")
+	@GetMapping(value= "/day_filter")
 	public ResponseEntity<Object> filter(
 			//TODO: defaultValue today
 			@RequestParam (name= "day") int day,
