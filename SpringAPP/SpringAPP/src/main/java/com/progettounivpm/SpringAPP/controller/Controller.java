@@ -1,6 +1,5 @@
 package com.progettounivpm.SpringAPP.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
@@ -29,13 +28,13 @@ public class Controller {
 	@GetMapping(value= "/tweet/get")
 	public ResponseEntity<Object> getTweetInfo( 
 			@RequestParam (name= "hashtag", defaultValue= "univpm") String hashtag,
-			@RequestParam (name= "count", defaultValue = "5" )int count)
-			throws IOException{
+			@RequestParam (name= "count", defaultValue = "50" )int count)
+			throws Exception{
 		TwitterServiceImpl downloadTweets = new TwitterServiceImpl();
 		allTweetsData = downloadTweets.getJSONTweets(hashtag,count);
 		tweets = downloadTweets.getTweetInfo(allTweetsData);
 		if (tweets.size() == 0)
-			return new ResponseEntity<Object>("ERRORE, hashtag inesistente. Effettuare nuovamente la chiamata.",HttpStatus.OK);
+			throw new Exception("ERRORE: hashtag inesistente. Effettuare nuovamente la chiamata.");
 		else
 			return new ResponseEntity<Object>(downloadTweets.toJSON(tweets),HttpStatus.OK);
 	}
