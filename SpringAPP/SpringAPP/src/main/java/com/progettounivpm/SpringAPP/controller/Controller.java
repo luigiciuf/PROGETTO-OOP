@@ -42,7 +42,7 @@ public class Controller {
 	
 	@GetMapping(value= "/hastag_filter") 
 	public ResponseEntity<Object> filtroHashtag (
-			// inserire eccezione se non è stato inserito il parametro
+			// inserire eccezione se non ï¿½ stato inserito il parametro
 			@RequestParam (name= "hashtag") String hashtag) throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		HashtagFilter hashtag_filter = new HashtagFilter(hashtag, tweets);
@@ -78,10 +78,11 @@ public class Controller {
 	public ResponseEntity<Object> hs() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		HashtagsStats statistiche= new HashtagsStats(tweets);
-		return new ResponseEntity<Object>(statistiche.Statistic1(), HttpStatus.OK);	
+		return new ResponseEntity<Object>(" tweet scaricati: "+ tweets.size()+statistiche.Statistic1(), HttpStatus.OK);	
+		
 	}
 	
-	//metodo ausiliario, che lancia un eccezione se la prima rotta non è stata lanciata
+	//metodo ausiliario, che lancia un eccezione se la prima rotta non ï¿½ stata lanciata
 	private static void TweetsisEmpty(ArrayList<Tweet> tweets) throws TweetsIsEmptyException {
 		if (tweets.isEmpty()==true) 
 			throw new TweetsIsEmptyException("Lanciare prima la rotta: /tweet/get");		

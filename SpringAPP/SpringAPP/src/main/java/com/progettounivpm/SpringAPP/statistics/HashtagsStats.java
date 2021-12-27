@@ -1,4 +1,4 @@
-package com.progettounivpm.SpringAPP.statistics;
+ package com.progettounivpm.SpringAPP.statistics;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +32,7 @@ public class HashtagsStats implements Statistic {
 	public HashMap<String, Integer> Statistic1() {
 		HashMap<String,Integer> temp= new HashMap<String,Integer>();
 		
+		
 		for ( Tweet t: hstats) {
 			ArrayList<String> hashtags= t.getHashtags();	
 			for(String h: hashtags) {
@@ -60,7 +61,10 @@ public class HashtagsStats implements Statistic {
 				}
 			}
 		}
-		temp.put("Tweet scaricati" ,hstats.size());
+		
+		
+		
+		
 		
 		return temp;
 	}
