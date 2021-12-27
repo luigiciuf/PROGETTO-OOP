@@ -1,6 +1,7 @@
 package com.progettounivpm.SpringAPP.model;
 
 import java.util.ArrayList;
+import org.json.simple.JSONObject;
 
 public class Tweet {
 	private DataOra created_at;				// Data creazione tweet.
@@ -35,7 +36,8 @@ public class Tweet {
 			if (s == null) s = str;
 			else s = s + ", " + str;
 		}
-		return s;	
+		if (s==null) s="";
+		return s;
 		}
 		
 	public void setHashtags(ArrayList<String> hashtags) {
@@ -85,7 +87,27 @@ public class Tweet {
 	}
 	
 	public String toString() {
-		// TODO
-		return ("");
+		return ("\n"+"Created at: "+getCreated_at_Text()+
+				"\n"+"Location: "+getLocation()+
+				"\n"+"Other Hashtags: "+getHashtagsText()+
+				"\n"+"Tweet lenguage: "+getIsolanguage_code()+
+				"\n"+"Result type: "+getResult_type()+
+				"\n"+"In Repy: "+getIn_reply()+
+				"\n"+"User_acount Created at: "+getCreated_at_user_Text()+
+				"\n"+"Statuses count: "+getStatuses_count());
+	}	
+
+	public JSONObject toJSONObject() {
+		JSONObject JoTweet = new JSONObject();
+		
+		JoTweet.put("created_at",getCreated_at_Text());
+		JoTweet.put("hastags",getHashtagsText());
+		JoTweet.put("isolanguage_code",getIsolanguage_code());
+		JoTweet.put("result_type",getResult_type());
+		JoTweet.put("in_reply",getIn_reply());
+		JoTweet.put("created_at_user",getCreated_at_user_Text());
+		JoTweet.put("statuses_count",getStatuses_count());
+		
+		return JoTweet;
 	}
 }
