@@ -1,6 +1,8 @@
 package com.progettounivpm.SpringAPP.service;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import org.springframework.stereotype.Service;
@@ -108,6 +111,29 @@ public class TwitterServiceImpl implements TwitterService{
 		}
 		oggettoFiltrato.put("Tweets", arrayTweets);
 		return oggettoFiltrato;	
+	}	
+	
+	/* Metodo per leggere un file locale.
+	 * Restituisce L'Array List con tutti i tweet nel file.
+	 */
+	public ArrayList<Tweet> readFile(String path) {
+		JSONParser jParser = new JSONParser();
+		JSONObject jObj = new JSONObject();
+		
+		try (FileReader reader = new FileReader(path)){
+			jObj = (JSONObject)jParser.parse(reader);
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		catch (ParseException e) { 
+			e.printStackTrace();
+		}
+		//richiamiamo il metodo getTweetInfo per estrapolare dal JSONObject i tweet.
+		return (getTweetInfo(jObj));	
 	}	
 
 }
