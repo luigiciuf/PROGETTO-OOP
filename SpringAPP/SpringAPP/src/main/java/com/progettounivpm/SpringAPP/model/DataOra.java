@@ -3,9 +3,9 @@ package com.progettounivpm.SpringAPP.model;
 
 public class DataOra {
 	
-	// Tue Dec 14 17:32:42 +0000 2021
-	// visto che all'interno del json è una stringa, possiamo usare la funzione .split(" ") 
-	// e poi dei possibili cast
+	/*  Tue Dec 14 17:32:42 +0000 2021
+	 *  Di tipo String, quindi possiamo usare la funzione .split(" ") e poi dei possibili cast.
+	 */ 
 	
 	private String giornosettimana;
 	private int giorno;
