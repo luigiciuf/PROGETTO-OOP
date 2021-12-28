@@ -6,8 +6,8 @@ import org.json.simple.JSONObject;
 import com.progettounivpm.SpringAPP.model.Tweet;
 
 public class HashtagFilter implements Filter{
-	private String 	hashtag;
 	private ArrayList<Tweet> tweets;
+	private String 	hashtag;
 
 	//Costruttore
 	public HashtagFilter(String hashtag, ArrayList<Tweet> tweets) {
@@ -19,23 +19,27 @@ public class HashtagFilter implements Filter{
 	public JSONObject filter() {
 		
 		JSONObject oggettoFiltrato = new JSONObject();
-		JSONArray arrayTweets = new JSONArray();
+		JSONArray JarrayTweets = new JSONArray();
 		
 		for (Tweet t: tweets) {
 			ArrayList<String> hashtags = t.getHashtags();
 			for (String h: hashtags) {
 				if (h.equals(hashtag)) {
-					//solo se ha verificato la presenza dell'hashtag 
-					//aggiunge all'array il tweet
-					arrayTweets.add(t.toJSONObject());
-					break; // per evitare che continui a cercare nuovamente tra gli hashtag
+					//Solo se ha verificato la presenza dell'hashtag aggiunge il tweet all'array. 
+					JarrayTweets.add(t.toJSONObject());
+					//Per evitare che continui a cercare nuovamente tra gli hashtag usciamo dal ciclo for. 
+					break;
 				}
-			}
-			oggettoFiltrato.put("tweets with hashtag " + hashtag, arrayTweets);
-			//l'oggetto che restituiremo sarà formato da una stringa (tweets with hashtag+nome hashtag) e come valore, da un array contenente svariati oggetti che rappresentano i tweet
-			
-			//TODO: eccezione se arrayTweets vuoto
-		}	
+			}	
+		}
+		if (JarrayTweets.isEmpty()==true)
+			oggettoFiltrato.put("Non ci sono tweets con hashtag: " + hashtag, JarrayTweets);
+		else oggettoFiltrato.put("Tweets con hashtag: "+hashtag+" = "+JarrayTweets.size()+" ", JarrayTweets);
+		
+		/* Il JSONObject che restituiremo: 
+		 * ha come stringa (tweets with hashtag+nome hashtag) 
+		 * e come valore un JSONArray contenente svariati JSONObject (i tweet).
+		 */
 		return oggettoFiltrato;
 	}
 

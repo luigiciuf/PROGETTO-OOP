@@ -25,14 +25,21 @@ public class TemporalPeriodFilter implements Filter{
 	public JSONObject filter() {
 		
 		JSONObject oggettoFiltrato = new JSONObject();
-		JSONArray arrayTweets = new JSONArray();
+		JSONArray JarrayTweets = new JSONArray();
 		
 		for (Tweet t: tweets) {
-			if ((t.getCreated_at().getGiorno()==giorno)&&(t.getCreated_at().getMese().equals(mese))&&(t.getCreated_at().getAnno()==anno)) {
-				arrayTweets.add(t.toJSONObject());
-			}
-			oggettoFiltrato.put("tweets posted on "+giorno+"/"+mese+"/"+anno, arrayTweets);
+			if ((t.getCreated_at().getGiorno()==giorno)&&(t.getCreated_at().getMese().equals(mese))&&(t.getCreated_at().getAnno()==anno))
+				JarrayTweets.add(t.toJSONObject());
 		}
+		
+		if (JarrayTweets.isEmpty()==true)
+			oggettoFiltrato.put("Non ci sono tweets postati il "+giorno+"/"+mese+"/"+anno, JarrayTweets);
+		else oggettoFiltrato.put("Tweets postati il "+giorno+"/"+mese+"/"+anno+" = "+JarrayTweets.size()+" ", JarrayTweets);
+		
+		/* Il JSONObject che restituiremo: 
+		 * ha come stringa (tweets with hashtag+nome hashtag) 
+		 * e come valore un JSONArray contenente svariati JSONObject (i tweet).
+		 */
 		return oggettoFiltrato;
 	}
 
