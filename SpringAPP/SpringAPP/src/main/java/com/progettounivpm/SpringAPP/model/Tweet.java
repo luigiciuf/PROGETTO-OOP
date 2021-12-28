@@ -93,7 +93,7 @@ public class Tweet {
 				"\n"+"Tweet lenguage: "+getIsolanguage_code()+
 				"\n"+"Result type: "+getResult_type()+
 				"\n"+"In Repy: "+getIn_reply()+
-				"\n"+"User_acount Created at: "+getCreated_at_user_Text()+
+				"\n"+"User_account Created at: "+getCreated_at_user_Text()+
 				"\n"+"Statuses count: "+getStatuses_count());
 	}	
 
@@ -105,6 +105,7 @@ public class Tweet {
 		JoTweet.put("isolanguage_code",getIsolanguage_code());
 		JoTweet.put("result_type",getResult_type());
 		JoTweet.put("in_reply",getIn_reply());
+		JoTweet.put("location",getLocation());
 		JoTweet.put("created_at_user",getCreated_at_user_Text());
 		JoTweet.put("statuses_count",getStatuses_count());
 		
