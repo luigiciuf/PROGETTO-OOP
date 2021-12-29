@@ -21,6 +21,7 @@ public class Tweet {
 	public DataOra getCreated_at() {
 		return created_at;
 	}
+	// Metodo che utilizza toString di DataOra per riottenere una Stringa.
 	public String getCreated_at_Text() {
 		return created_at.toString();
 	}
@@ -30,6 +31,7 @@ public class Tweet {
 	public ArrayList<String> getHashtags() {
 		return hashtags;
 	}
+	// Metodo per riottenere una stringa con tutti gli hashtag.
 	public String getHashtagsText() {
 		String s = null;
 		for (String str: hashtags) {
@@ -86,6 +88,7 @@ public class Tweet {
 		this.statuses_count = statuses_count;
 	}
 	
+	// Ridefiniamo il metodo toString.
 	public String toString() {
 		return ("\n"+"Created at: "+getCreated_at_Text()+
 				"\n"+"Location: "+getLocation()+
@@ -97,9 +100,10 @@ public class Tweet {
 				"\n"+"Statuses count: "+getStatuses_count());
 	}	
 
+	// Metodo che restituisce un JSONObject contenente tutte le variabili interne della classe Tweet.
 	public JSONObject toJSONObject() {
 		JSONObject JoTweet = new JSONObject();
-		
+		//Purtroppo non è possibile conservare l'ordine dei put.
 		JoTweet.put("created_at",getCreated_at_Text());
 		JoTweet.put("hastags",getHashtagsText());
 		JoTweet.put("isolanguage_code",getIsolanguage_code());

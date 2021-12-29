@@ -32,7 +32,6 @@ public class TwitterServiceImpl implements TwitterService{
 		JSONObject tweets = null; //oggetto locale usato per il return
 		
 		URLConnection openConnection= new URL( url + hashtag + "&count=" + count).openConnection(); // Open connection crea la connessione con il URL indicato.
-		// Volendo è possibile ridefinire openConnection come lettura di un file json o txt da un percorso stabilito.
 		
 		InputStream in = openConnection.getInputStream();  //Legge la connessione creando un oggetto in di tipo InputStream.
 		String data= "";
@@ -67,11 +66,11 @@ public class TwitterServiceImpl implements TwitterService{
 		JSONArray statuses = (JSONArray)jsonTweets.get("statuses");
 		for(int i=0; i < statuses.size(); i++) {
 			JSONObject temp = (JSONObject) statuses.get(i);
-			Tweet x = new Tweet(); //Oggetto temporaneo usato come variabile di appoggio
+			Tweet x = new Tweet(); //Oggetto temporaneo usato come variabile di appoggio.
 			
-			// Preleviamo Created_at
+			// Preleviamo Created_at.
 			x.setCreated_at((String)temp.get("created_at"));
-			// Preleviamo gli hashtag (hastag_text) all'interno dell'oggetto entities
+			// Preleviamo gli hashtag (hastag_text) all'interno dell'oggetto entities.
 			JSONObject entities = (JSONObject)temp.get("entities");
 			JSONArray jArray_hastags = (JSONArray)entities.get("hashtags");
 			ArrayList<String> temp_hashtags = new ArrayList<String>();
@@ -81,20 +80,20 @@ public class TwitterServiceImpl implements TwitterService{
 				temp_hashtags.add(text);
 			}
 			x.setHashtags(temp_hashtags);
-			// Preleviamo isolanguage_code e result typer dentro metadata
+			// Preleviamo isolanguage_code e result typer dentro metadata.
 			JSONObject metadata = (JSONObject)temp.get("metadata"); {
 				x.setResult_type((String)metadata.get("result_type"));
 				x.setIsolanguage_code((String)metadata.get("iso_language_code"));  
 			}
 			// Preleviamo in_reply
 			x.setIn_reply((String)temp.get("in_reply_to_status_id ")); 
-			// Dentro user e preleviamo location, created_at_user, statuses_count
+			// Dentro user e preleviamo location, created_at_user, statuses_count.
 			JSONObject user= (JSONObject)temp.get("user"); {
 				x.setLocation((String)user.get("location"));
 				x.setCreated_at_user((String)user.get("created_at"));
 				x.setStatuses_count(String.valueOf(user.get("statuses_count")));
 			 }		
-			//infine aggiungiamo alla lista che restituiremo, l'oggetto temporaneo del ciclo.
+			//Infine aggiungiamo alla lista che restituiremo, l'oggetto temporaneo del ciclo.
 			tweets.add(x);
 		}
 		return tweets;
@@ -132,7 +131,7 @@ public class TwitterServiceImpl implements TwitterService{
 		catch (ParseException e) { 
 			e.printStackTrace();
 		}
-		//richiamiamo il metodo getTweetInfo per estrapolare dal JSONObject i tweet.
+		//Richiamiamo il metodo getTweetInfo per estrapolare dal JSONObject i tweet (PARSING).
 		return (getTweetInfo(jObj));	
 	}	
 
