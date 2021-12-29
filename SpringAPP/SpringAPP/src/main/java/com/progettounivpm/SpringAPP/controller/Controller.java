@@ -77,7 +77,7 @@ public class Controller {
 	public ResponseEntity<Object> hs() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		HashtagsStats statistiche= new HashtagsStats(tweets);
-		return new ResponseEntity<Object>(" tweet scaricati: "+ tweets.size()+statistiche.Statistic1(), HttpStatus.OK);	
+		return new ResponseEntity<Object>(statistiche.Statistic(), HttpStatus.OK);	
 		
 	}
 	
