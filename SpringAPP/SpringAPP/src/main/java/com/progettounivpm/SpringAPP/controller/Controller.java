@@ -1,5 +1,6 @@
 package com.progettounivpm.SpringAPP.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.progettounivpm.SpringAPP.exception.HashtagInexistentException;
 import com.progettounivpm.SpringAPP.exception.TweetsIsEmptyException;
 import com.progettounivpm.SpringAPP.filter.HashtagFilter;
 import com.progettounivpm.SpringAPP.filter.TemporalPeriodFilter;
@@ -29,12 +31,12 @@ public class Controller {
 	public ResponseEntity<Object> getTweetInfo( 
 			@RequestParam (name= "hashtag", defaultValue= "univpm") String hashtag,
 			@RequestParam (name= "count", defaultValue = "100" )int count)
-			throws Exception{
+			throws HashtagInexistentException, IOException{
 		TwitterServiceImpl downloadTweets = new TwitterServiceImpl();
 		allTweetsData = downloadTweets.getJSONTweets(hashtag,count);
 		tweets = downloadTweets.getTweetInfo(allTweetsData);
 		if (tweets.size() == 0)
-			throw new Exception("ERRORE: hashtag inesistente. Effettuare nuovamente la chiamata.");
+			throw new HashtagInexistentException();
 		else
 			return new ResponseEntity<Object>(downloadTweets.toJSON(tweets),HttpStatus.OK);
 	}
