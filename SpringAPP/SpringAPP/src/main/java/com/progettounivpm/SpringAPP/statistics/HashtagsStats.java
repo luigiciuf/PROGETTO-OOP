@@ -7,11 +7,13 @@ import java.util.Set;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.progettounivpm.SpringAPP.exception.TweetsIsEmptyException;
 import com.progettounivpm.SpringAPP.model.Tweet;
 
 public class HashtagsStats implements Statistic {
 	
 	private ArrayList<Tweet> hstats;
+	private int nulli;
 	
 
 	public HashtagsStats(ArrayList<Tweet> hstats) {
@@ -23,8 +25,11 @@ public class HashtagsStats implements Statistic {
 
 	@Override
 	public JSONObject Statistic() {
-		
-		return null;
+		JSONObject risultati = new JSONObject();
+		risultati.put("Tweet scaricati:",hstats.size());
+		risultati.put("Ricorrenze hashtag", Statistic1());
+		risultati.put("Tweet con hashtag nulli: ", nulli);
+	return risultati;
 	}
 	
 	
@@ -34,7 +39,9 @@ public class HashtagsStats implements Statistic {
 		
 		
 		for ( Tweet t: hstats) {
-			ArrayList<String> hashtags= t.getHashtags();	
+			ArrayList<String> hashtags= t.getHashtags();
+			if(hashtags.isEmpty()==true)
+				nulli++;
 			for(String h: hashtags) {
 				//se l'HashMap è ancora vuota inseriamo il primo elemento , altrimetni non farebbe nessuna iterazione
 				// del ciclo successvo
