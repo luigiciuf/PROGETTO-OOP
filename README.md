@@ -20,13 +20,13 @@ Applicazione Java che utilizza le API di Twitter per fare ricerche in base ad un
 
 Lo scopo principale dell’applicazione è quello di ricercare tweet attraverso un hashtag dato in input dall’utente come parametro. È possibile inoltre decidere il numero di tweet visualizzabili dando un valore al parametro “count” altrimenti viene passato il valore di default che corrisponde a 100 (che è anche il massimo valore utilizzabile). È possibile come richiesto nelle specifiche del progetto filtrare i risultati ottenuti e visualizzare delle statistiche.
 
-# FILTRI :memo:
+# FILTRI     :memo:
 TIPO DI FILTRO | COSA RESTITUISCE
 ------------ | -------------
 GIORNO, MESE, ANNO: |  Vengono restituiti i tweet postati in quella determinata data.
 HASHTAG: | Vengono restituiti i tweet che al loro interno contengono un altro hashtag  definito come parametro.
 
-# STATISTICHE :bar_chart:
+# STATISTICHE       :bar_chart:
 
 TIPO DI STATISTICA | COSA RESTITUISCE 
 ------------ | -------------
@@ -34,7 +34,7 @@ GIORNI: | Viene restituito il numero e la percentuale di tweet pubblicati nei di
 ORA: | Vengono restituite statistiche su la pubblicazione nelle diverse fasce orarie giornaliere.
 HASHTAG:| Vengono restituite statistiche sulla ricorrenza di quell’hashtag all’interno dei tweet.
 
-# CONFIGURAZIONE  :computer:
+# CONFIGURAZIONE     :computer:
 Per visionare il progetto è necessario clonare la repository situata su GitHub in locale oppure è possibile eseguire tramite terminale il seguente comando 
 “ git clone https://github.com/luigiciuf/PROGETTO-OOP”
 In questo modo è possibile lanciare il progetto come SpringBoot application da un IDE (noi abbiamo utilizzato Eclipse) oppure da terminale e quando il programma sarà in esecuzione bisogna utilizzare un client (ES. Postman) che ci permetterà di passare i vari parametri contattando l’indirizzo
@@ -54,7 +54,7 @@ ROTTA | COSA RESTITUISCE
 ATTENZIONE :warning: : non è possibile lanciare le rotte dei filtri e degli hashtag senza prima effettuare la prima rotta(/tweet/get). 
 
 
-# PARAMETRI :page_with_curl:
+# PARAMETRI   :page_with_curl:
 
 PARAMETRI | TIPO | RICHIESTI | OBBLIGATORI
 ------------ | ------------- | ------------ | -------------
@@ -84,7 +84,7 @@ RISULTATI DELLE RICERCHE:
 
 ![fasce orarie stats](https://user-images.githubusercontent.com/92534853/147741611-d4b365a2-e326-48b5-a9dc-4fa2da99737d.png)
 
-5)STATISTICHE PUBBLICAZIONE TWEET NEI GIORNI DELLA SETTIMANA
+5) STATISTICHE PUBBLICAZIONE TWEET NEI GIORNI DELLA SETTIMANA
 
 ![giorni stats](https://user-images.githubusercontent.com/92534853/147741660-26c2b1c3-9b73-4888-b11d-f0e64632ea28.png)
 
