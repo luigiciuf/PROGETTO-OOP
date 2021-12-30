@@ -3,7 +3,7 @@
 # PROGETTO PROGRAMMAZIONE AD OGGETTI 2021-2022
 # INDICE  :bookmark_tabs:
 - [INTRODUZIONE](#INTRODUZIONE)
-- [FILTRI](# FILTRI :memo:)
+- [FILTRI](#FILTRI )
 - [STATISTICHE](#STATISTICHE)
 
 - [CONFIGURAZIONE](#CONFIGURAZIONE)
@@ -44,12 +44,12 @@ NOTA: in caso di problemi per l’utilizzo della porta 8080 è possibile modific
 # ROTTE   :globe_with_meridians:
 ROTTA | COSA RESTITUISCE
 ------------ | -------------
-1)GET:  /tweet/get  | Restituisce un JSONObject contenente tutte le informazioni relative ai dati di un tweet .
-2)GET:  /hashtag_filter  | Restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito .
-3)GET: /day_filter   |   Restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita.
-4)GET: /tweet/timestats  |   Restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata .
-5)GET: /tweet/daystats    | Restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana .
-6)GET: /tweet/hashtagsstats | Restituisce una HashMap contentente la ricorrenza degli hashtag all'interno dei vari tweet.
+1) GET:  /tweet/get  | Restituisce un JSONObject contenente tutte le informazioni relative ai vari tweet.
+2) GET:  /hashtag_filter  | Restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito .
+3) GET: /day_filter   |   Restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita.
+4) GET: /tweet/timestats  |   Restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata .
+5) GET: /tweet/daystats    | Restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana .
+6) GET: /tweet/hashtagsstats | Restituisce una HashMap contentente la ricorrenza degli hashtag all'interno dei vari tweet.
 
 ATTENZIONE :warning: : non è possibile lanciare le rotte dei filtri e degli hashtag senza prima effettuare la prima rotta(/tweet/get). 
 
@@ -58,12 +58,12 @@ ATTENZIONE :warning: : non è possibile lanciare le rotte dei filtri e degli has
 
 PARAMETRI | TIPO | RICHIESTI | OBBLIGATORI
 ------------ | ------------- | ------------ | -------------
-1)Hashtag, Count | String, Int | SI | No
-2)Hashtag | String | SI | SI 
-3)Day,Mounth,Year | Int,Int,Int | SI | SI
-4)Non richiesti | --- | --- | ---
-5)Non richiesti | --- | --- | ---
-6)Non richiesti | --- | --- | ---
+1) Hashtag, Count | String, Int | SI | No
+2) Hashtag | String | SI | SI 
+3) Day,Mounth,Year | Int,String,Int | SI | SI
+4) Non richiesti | --- | --- | ---
+5) Non richiesti | --- | --- | ---
+6) Non richiesti | --- | --- | ---
 
 RISULTATI DELLE RICERCHE: 
 
