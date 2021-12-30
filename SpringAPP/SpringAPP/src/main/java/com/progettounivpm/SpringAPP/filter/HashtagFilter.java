@@ -5,16 +5,36 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import com.progettounivpm.SpringAPP.model.Tweet;
 
+/**
+ * <b>Classe</b> HashtagFilter che implementa Filter. Filtrerà dall' ArrayList tutti i tweet che contengono l'hashtag specificato.
+ * @author Luigi Ciuffreda
+ * @author Federico Rossolini
+ *
+ */
 public class HashtagFilter implements Filter{
+	/**
+	 * <b>ArrayList</b> che contiene tutti i tweet da filtrare.
+	 */
 	private ArrayList<Tweet> tweets;
+	/**
+	 * Hashtag usato come parametro per filtrare i tweet.
+	 */
 	private String 	hashtag;
 
-	//Costruttore
+	/**
+	 * <b>Costruttore</b>
+	 * @param hashtag Stringa usata come parametro per filtrare i tweet
+	 * @param tweets ArrayList che contiene tutti i tweet da filtrare.
+	 */
 	public HashtagFilter(String hashtag, ArrayList<Tweet> tweets) {
 		this.hashtag = hashtag;
 		this.tweets = tweets;
 	}
 	
+	/**
+	 * <b>Metodo</b> che filtra tutti i tweet contenenti l'hastag.
+	 * @return Il JSONObject che restituiremo: ha come stringa ("tweets with hashtag"+nome dell'hashtag) e come valore un JSONArray contenente svariati JSONObject (i tweet).
+	 */
 	@Override
 	public JSONObject filter() {
 		
@@ -36,10 +56,6 @@ public class HashtagFilter implements Filter{
 			oggettoFiltrato.put("Non ci sono tweets con hashtag: " + hashtag, JarrayTweets);
 		else oggettoFiltrato.put("Tweets con hashtag: "+hashtag+" = "+JarrayTweets.size()+" ", JarrayTweets);
 		
-		/* Il JSONObject che restituiremo: 
-		 * ha come stringa (tweets with hashtag+nome hashtag) 
-		 * e come valore un JSONArray contenente svariati JSONObject (i tweet).
-		 */
 		return oggettoFiltrato;
 	}
 
