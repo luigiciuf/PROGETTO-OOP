@@ -9,7 +9,9 @@
 - [CONFIGURAZIONE](#CONFIGURAZIONE)
 - [ROTTE](#ROTTE) 
 - [PARAMETRI](#PARAMETRI)
+- [ECCEZIONI](#ECCEZIONI)
 - [TEST](#TEST)
+- [DOCUMENTAZIONE](#DOCUMENTAZIONE)
 
 
 # INTRODUZIONE 
@@ -47,6 +49,8 @@ ROTTA | COSA RESTITUISCE
 4)GET: /tweet/timestats  |   restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata 
 5)GET: /tweet/daystats    | restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
 6)GET: /tweet/hashtagsstats | restituisce una HashMap contentente la ricorrenza degli hashtag all'interno dei vari tweet
+
+ATTENZIONE: non è possibile lanciare le rotte dei filtri e degli hashtag senza prima effettuare la prima rotta(/tweet/get). 
 
 
 # PARAMETRI 
@@ -86,9 +90,28 @@ RISULTATI DELLE RICERCHE:
 
 
 
+# ECCEZIONI
+Oltre alle eccezioni standard di java sono state inserite altre eccezioni personalizzate reperibili [qui.](https://github.com/luigiciuf/PROGETTO-OOP/tree/master/SpringAPP/SpringAPP/src/main/java/com/progettounivpm/SpringAPP/exception)
+* **TweetsIsEmptyException:** viene lanciata se provo a lanciare altre rotta prima di quella obbligatoria. Viene visualizzato il seguente messaggio: 
+  ### "ERRORE: Lanciare prima la Rotta /tweet/get"
+* **HashtagInexistentException:** viene lanciata se l'hashtag inserito nella prima rotta è inesistente. Viene visualizzato il seguente messaggio:
+  ### "ERRORE: hashtag inesistente. Effettuare nuovamente la chiamata."
 
 # TEST
+Utilizzando il frameword JUnit abbiamo implementato 2 test che si possono consultare [qui.](https://github.com/luigiciuf/PROGETTO-OOP/tree/master/SpringAPP/SpringAPP/src/test/java/com/progettounivpm/SpringAPP)
+* Test 1 : Controllo chiamata API e parsing.
+* Test 2: Verifica filtro con zero risultati
 
+# DOCUMENTAZIONE
+Tutto il progetto è documentato in javadoc
+
+AUTORI
+Il seguente progett è stato realizzato da :
+*[Federico Rossolini](https://github.com/Fede-Rosso): filtri,eccezioni,service , test
+*[Luigi Ciuffreda](https://github.com/luigiciuf): statitiche, readme ,controller, javadoc
+
+Il seguente progetto è stato sviluppato in circa 3 settimane di lavoro documentando il tutto su git hub con i vari commit che ci hanno permesso di poter effettuare dei confronti ed eventuali correzzioni di coppia. Tutte le specifiche richieste sono state implementate aggiungendo anche un plus sulla parte delle statistiche dei tweet nelle varie fasce orarie giornaliere.
+Si ringrazia il professor Emanuele Frontoni e tutti i suoi collaboratori per la disponibilità e i consigli.
 
 
 
