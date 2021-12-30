@@ -15,7 +15,7 @@ public class DayStats implements Statistic {
 	}
 
 	@Override
-	public JSONObject Statistic() {
+	public JSONObject statistic() {
 		
 		DataOra data;
 		int day1=0,day2=0,day3=0,day4=0,day5=0,day6=0,day7=0;
@@ -72,7 +72,7 @@ public class DayStats implements Statistic {
 
 
 	@Override
-	public HashMap Statistic1() {
+	public HashMap statistic1() {
 		// TODO Auto-generated method stub
 		return null;
 	}

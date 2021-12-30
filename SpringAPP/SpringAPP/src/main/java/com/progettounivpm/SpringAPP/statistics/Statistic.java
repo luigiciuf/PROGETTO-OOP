@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 
 public interface Statistic {
 	
-	public abstract JSONObject Statistic();
-	public abstract HashMap Statistic1();
+	public abstract JSONObject statistic();
+	public abstract HashMap statistic1();
 
 }

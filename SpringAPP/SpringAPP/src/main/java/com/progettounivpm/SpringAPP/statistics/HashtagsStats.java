@@ -20,16 +20,16 @@ public class HashtagsStats implements Statistic {
 	}
 
 	@Override
-	public JSONObject Statistic() {
+	public JSONObject statistic() {
 		JSONObject risultati = new JSONObject();
 		risultati.put("Tweet scaricati:",tweets.size());
 		nulli=0;
-		risultati.put("Ricorrenze hashtag", Statistic1());
+		risultati.put("Ricorrenze hashtag", statistic1());
 		risultati.put("Tweet senza altri hashtag: ", nulli);
 		return risultati;
 	}
 	
-	public HashMap<String, Integer> Statistic1() {
+	public HashMap<String, Integer> statistic1() {
 		HashMap<String,Integer> temp= new LinkedHashMap<String,Integer>();
 		//Usiamo LinkedHashMap per mantenere l'ordine di inserimento.
 		//Purtroppo non è possibile fare lo stesso per i jsonobject.

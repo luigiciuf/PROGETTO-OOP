@@ -16,7 +16,7 @@ public class TimeStats implements Statistic{
 	}
 
 	@Override
-	public JSONObject Statistic() {
+	public JSONObject statistic() {
 		JSONObject obj = new JSONObject();
 		int Fascia1 = 0, Fascia2 = 0, Fascia3 = 0;
 		DataOra ora;
@@ -39,7 +39,7 @@ public class TimeStats implements Statistic{
 	}
 
 	@Override
-	public HashMap Statistic1() {
+	public HashMap statistic1() {
 		// TODO Auto-generated method stub
 		return null;
 	}

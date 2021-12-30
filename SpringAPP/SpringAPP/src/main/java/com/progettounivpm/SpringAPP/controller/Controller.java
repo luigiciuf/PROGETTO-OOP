@@ -65,21 +65,21 @@ public class Controller {
 	public ResponseEntity<Object> timestats() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		TimeStats timestats = new TimeStats(tweets);
-		return new ResponseEntity<Object>(timestats.Statistic(),HttpStatus.OK);	
+		return new ResponseEntity<Object>(timestats.statistic(),HttpStatus.OK);	
 	}
 	
 	@GetMapping(value= "/tweet/daystats")
 	public ResponseEntity<Object> stampastats() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		DayStats daystats = new DayStats(tweets);
-		return new ResponseEntity<Object>(daystats.Statistic(),HttpStatus.OK);
+		return new ResponseEntity<Object>(daystats.statistic(),HttpStatus.OK);
 	}
 	
 	@GetMapping(value= "/tweet/hashtagstats")
 	public ResponseEntity<Object> hs() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		HashtagsStats statistiche = new HashtagsStats(tweets);
-		return new ResponseEntity<Object>(statistiche.Statistic(), HttpStatus.OK);	
+		return new ResponseEntity<Object>(statistiche.statistic(), HttpStatus.OK);	
 	}
 	
 	//Metodo ausiliario, usato in tutte le rotte (eccetto la prima) per verificare se sono stati scaricati tweet.
