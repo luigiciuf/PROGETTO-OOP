@@ -3,7 +3,7 @@
 # PROGETTO PROGRAMMAZIONE AD OGGETTI 2021-2022
 # INDICE  :bookmark_tabs:
 - [INTRODUZIONE](#INTRODUZIONE)
-- [FILTRI](#FILTRI )
+- [FILTRI](#FILTRI:memo:)
 - [STATISTICHE](#STATISTICHE)
 
 - [CONFIGURAZIONE](#CONFIGURAZIONE)
@@ -20,7 +20,7 @@ Applicazione Java che utilizza le API di Twitter per fare ricerche in base ad un
 
 Lo scopo principale dell’applicazione è quello di ricercare tweet attraverso un hashtag dato in input dall’utente come parametro. È possibile inoltre decidere il numero di tweet visualizzabili dando un valore al parametro “count” altrimenti viene passato il valore di default che corrisponde a 100 (che è anche il massimo valore utilizzabile). È possibile come richiesto nelle specifiche del progetto filtrare i risultati ottenuti e visualizzare delle statistiche.
 
-# FILTRI     
+# FILTRI:memo:     
 TIPO DI FILTRO | COSA RESTITUISCE
 ------------ | -------------
 GIORNO, MESE, ANNO: |  Vengono restituiti i tweet postati in quella determinata data.
