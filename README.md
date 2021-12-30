@@ -115,7 +115,7 @@ Utilizzando il frameword JUnit abbiamo implementato 2 test che si possono consul
 * Test 2: Verifica filtro con zero risultati
 
 # DOCUMENTAZIONE :memo:
-Tutto il progetto è documentato in javadoc
+Tutto il progetto è documentato in javadoc ed è possibile visualizzarlo [qui](https://github.com/luigiciuf/PROGETTO-OOP/tree/master/SpringAPP/SpringAPP/doc)
 
 # FILE RESTITUITI  
 E' possibile visualizzare i vari file in formato json restituiti al lancio delle varie rotte [qui.](https://github.com/luigiciuf/PROGETTO-OOP/tree/master/SpringAPP/SpringAPP/FILE%20RESTITUITI)
