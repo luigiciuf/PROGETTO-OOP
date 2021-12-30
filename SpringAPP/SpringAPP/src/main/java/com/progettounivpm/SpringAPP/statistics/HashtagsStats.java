@@ -1,6 +1,7 @@
  package com.progettounivpm.SpringAPP.statistics;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -8,17 +9,38 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.progettounivpm.SpringAPP.model.Tweet;
+/**
+ * <b>Classe</b> HashtagStats che implementa Statistic che si occupa della ricorrenza dei vari hashtag all'interno dei tweet
+ * 
+ * @author Luigi Ciuffreda
+ * @author Federico Rossolini
+ *
+ */
 
 public class HashtagsStats implements Statistic {
+	/**
+	 *ArrayList che contiene tutti i tweet scaricati
+	 */
 	private ArrayList<Tweet> tweets;
+	/**
+	 * @param <nulli> contatore tweet con hashtag nulli
+	 */
 	private int nulli;
 	
 
-	//Costruttore
+	/**
+	 * costruttore HashtagsStats che prende come parametro un ArrayList 
+	 * @param tweets
+	 */
 	public HashtagsStats(ArrayList<Tweet> tweets) {
 		this.tweets = tweets;
 	}
-
+	/**
+	 *  <b>Metodo </b> statistic che ci restituisce i tweet scaricati , le ricorrenze degli hashtags presi dall'hashmap e i tweet senza hashtags
+	 *  @param <risultati> jsonobject che contiene tutti i dati 
+	 *  @see statistic1 statistic1 che costruisce l'hashmap
+	 *  @return JSONObject che contiene i dati delle statistiche
+	 */
 	@Override
 	public JSONObject statistic() {
 		JSONObject risultati = new JSONObject();
@@ -28,11 +50,15 @@ public class HashtagsStats implements Statistic {
 		risultati.put("Tweet senza altri hashtag: ", nulli);
 		return risultati;
 	}
-	
+	/**
+	 * <b>Metodo </b>statistic1 che costruisce un hashmap di tutti gli hashmap 
+	 * @param <temp> hashmap 
+	 * @return hashmap che contiene al suo interno la ricorrenza degli hashtag
+	 */
 	public HashMap<String, Integer> statistic1() {
 		HashMap<String,Integer> temp= new LinkedHashMap<String,Integer>();
 		//Usiamo LinkedHashMap per mantenere l'ordine di inserimento.
-		//Purtroppo non è possibile fare lo stesso per i jsonobject.
+		//Purtroppo non ï¿½ possibile fare lo stesso per i jsonobject.
 		
 		for (Tweet t: tweets) {
 			ArrayList<String> hashtags= t.getHashtags();

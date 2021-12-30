@@ -7,13 +7,36 @@ import org.json.simple.JSONObject;
 import com.progettounivpm.SpringAPP.model.DataOra;
 import com.progettounivpm.SpringAPP.model.Tweet;
 
+/**
+ * <b>Classe </b>DayStats classe che implementa Statistic che si occupa delle statistiche giornaliere
+ * 
+ * @author Luigi Ciuffreda
+ * @author Federico Rossolini
+ *
+ */
+
+
 public class DayStats implements Statistic {
+	/**
+	 * ArrayList che contiene tutti i tweet scaricati
+	 */
 	private ArrayList<Tweet> tweets;
 
+	/**
+	 * costruttore della classe DayStats che prende come parametro un ArrayList 
+	 * @param tweets   arraylist 
+	 */
 	public DayStats(ArrayList<Tweet> tweets) {
 		this.tweets = tweets;
 	}
-
+	
+	/**
+	 * <b>Metodo </b> statistic che inserisce dentro un arraylist i giorni della settimana e conta la loro ricorrenza
+	 * @param <day1,day2,day3,day4,day5,day6,day7> contatori 
+	 * @param <nulli> contatore dei tweet contenenti la stringa dei giorni nulla
+	 * @see DataOra  classe dataora utilizzata per modellare la data
+	 * @return JSONObject contenente tutte le statistiche giornaliere
+	 */
 	@Override
 	public JSONObject statistic() {
 		
@@ -69,8 +92,8 @@ public class DayStats implements Statistic {
 		obj.put("Tweet con giorni nulli", nulli);
 		return obj;
 	}
-
-
+	
+	
 	@Override
 	public HashMap statistic1() {
 		// TODO Auto-generated method stub

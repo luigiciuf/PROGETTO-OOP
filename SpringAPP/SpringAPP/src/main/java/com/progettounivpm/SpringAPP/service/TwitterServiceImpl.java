@@ -19,12 +19,26 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import com.progettounivpm.SpringAPP.model.Tweet;
+/**
+ * <b> Classe </b> TTwitterServiceImpl che implementa TwitterService
+ * @author Luigi Ciuffreda
+ * @author Federico Rossolini
+ *
+ */
 
 @Service 
 public class TwitterServiceImpl implements TwitterService{
+	/**
+	 * @param <url> url che contiene l'url dell'API da utilizzare
+	 */
 
 	private String url= "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=";
 	//private String ApiKey = ""; TODO: Da implementare poi quando sostituiremo il url
+	/**
+	 * <b> Metodo </b> getJSONTweets che effettua la chiamata all'api 
+	 * @param <tweets> utilizzato per contenere tutte i tweet 
+	 * @return JSONObject contenente tutti i tweet estratti dalla chiamata all'api
+	 */
 	
 	@Override
 	public JSONObject getJSONTweets(String hashtag,int count) throws IOException {
@@ -58,7 +72,11 @@ public class TwitterServiceImpl implements TwitterService{
 		}
 		return tweets;
 	}
-	
+	/**
+	 * <b> Metodo </b> getTweetInfo che fa il parsing del JSONObject
+	 * @param <tweets> Array list che contiene tutti i tweet
+	 * @return <tweets> array list contenente tutte le info da noi richieste dei tweet
+	 */
 	@Override
 	public ArrayList<Tweet> getTweetInfo(JSONObject jsonTweets) {
 		ArrayList<Tweet> tweets = new ArrayList<Tweet>();
@@ -98,7 +116,11 @@ public class TwitterServiceImpl implements TwitterService{
 		}
 		return tweets;
 	}
-	
+	/**
+	 * <b> Metodo </b>toJSON  usato per l'output
+	 * @return <oggettoFiltrato> JSONObject contenente tutti i tweet ma filtrati in base alle nostre esigenze
+	 * 
+	 */
 	@Override
 	public JSONObject toJSON(ArrayList<Tweet> tweets) {
 		
@@ -114,6 +136,11 @@ public class TwitterServiceImpl implements TwitterService{
 	
 	/* Metodo per leggere un file locale.
 	 * Restituisce L'Array List con tutti i tweet nel file.
+	 */
+	/**
+	 * <b> Metodo </b> readFile utilizzato per leggere un file da locare 
+	 * @param path stringa che contiene il percorso file 
+	 * @return array list con tutti i tweet contenuti nel file
 	 */
 	public ArrayList<Tweet> readFile(String path) {
 		JSONParser jParser = new JSONParser();

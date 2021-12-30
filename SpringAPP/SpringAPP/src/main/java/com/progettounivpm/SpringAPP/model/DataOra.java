@@ -1,12 +1,14 @@
 package com.progettounivpm.SpringAPP.model;
 
+/**
+ * <b> Classe </b> DataOra che modella la data con l'orario 
+ * @author Luigi Ciuffreda
+ * @author Federico Rossolini
+ *
+ */
+
 
 public class DataOra {
-	
-	/*  Tue Dec 14 17:32:42 +0000 2021
-	 *  Di tipo String, quindi possiamo usare la funzione .split(" ") e poi dei possibili cast.
-	 */ 
-	
 	private String giornosettimana;
 	private int giorno;
 	private String mese;
@@ -14,6 +16,9 @@ public class DataOra {
 	private int ora;
 	private int minuti;
 	
+	/**
+	 * costruttore che converte una stringa di questo tipo "Tue Dec 14 17:32:42 +0000 2021"
+	 */
 
 	public DataOra(String str) {
 		String s [] = str.split(" ");
@@ -46,6 +51,9 @@ public class DataOra {
 		return anno;
 	}
 	
+	/**
+	 * metodo per riottenere una stringa senza dati superflui
+	 */
 	public String toString() {
 		String text_ora;
 		if (this.ora<10)
