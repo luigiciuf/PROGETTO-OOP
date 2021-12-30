@@ -13,7 +13,7 @@
 - [TEST](#TEST-interrobang)
 - [DOCUMENTAZIONE](#DOCUMENTAZIONE-memo)
 - [AUTORI](#AUTORI-busts_in_silhouette)
-- [FILE RESTITUITI] (#FILERESTITUITI)
+- [FILE RESTITUITI](#FILERESTITUITI)
 
 
 # INTRODUZIONE 
@@ -67,32 +67,38 @@ PARAMETRI | TIPO | RICHIESTI | OBBLIGATORI
 6)Non richiesti | --- | --- | ---
 
 
-RISULTATI DELLE RICERCHE:
+CHIAMATE ROTTE, PARAMETRI E ESECUZIONE SU POSTMAN  :
 
 1) DATI TWEET
 
-![prima rotta](https://user-images.githubusercontent.com/92534853/147741545-d5a1f809-eb82-412c-bb3d-19e2391c15b6.png)
+![1](https://user-images.githubusercontent.com/92534853/147749762-226157f4-06e0-4e01-a74d-8cbdf1f7a304.PNG)
 
 
 2) TWEET FILTRATI IN BASE ALL'HASHTAG INSERITO 
 
-![hashtag filter](https://user-images.githubusercontent.com/92534853/147741558-ea10e1c1-7a5f-4623-b24c-3355f8cacf10.png)
+![2](https://user-images.githubusercontent.com/92534853/147749773-1ff3542c-43d9-4640-af21-bb8ddf445b8c.PNG)
+
 
 3) TWEET FILTRATI IN BASE ALLA DATA INSERITA
 
-![daily filter](https://user-images.githubusercontent.com/92534853/147741584-17260c23-cf44-437a-84cf-1272767f3c4c.png)
+![3](https://user-images.githubusercontent.com/92534853/147749779-4d692ea0-9205-4526-bb3a-20477330d403.PNG)
+
 
 4) STATISTICHE TWEET IN BASE ALLE FASCE ORARIE
 
-![fasce orarie stats](https://user-images.githubusercontent.com/92534853/147741611-d4b365a2-e326-48b5-a9dc-4fa2da99737d.png)
+![4](https://user-images.githubusercontent.com/92534853/147749784-d838281d-291c-4dcb-9433-ca6d2ba803db.PNG)
+
 
 5) STATISTICHE PUBBLICAZIONE TWEET NEI GIORNI DELLA SETTIMANA
 
-![giorni stats](https://user-images.githubusercontent.com/92534853/147741660-26c2b1c3-9b73-4888-b11d-f0e64632ea28.png)
+![5](https://user-images.githubusercontent.com/92534853/147749792-18aa17cf-9c53-443e-b6ce-439c49fa20f6.PNG)
+
+
 
 6) STATISTICHE RICORRENZA HASHTAG NEI VARI TWEETS
 
-![hashtags stats](https://user-images.githubusercontent.com/92534853/147741698-add42e6b-a712-40d7-9fa4-167b67101002.png)
+![6](https://user-images.githubusercontent.com/92534853/147749798-14d1623e-d239-4448-abd1-7414d349e6f4.PNG)
+
 
 
 
