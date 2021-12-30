@@ -13,6 +13,7 @@
 - [TEST](#TEST-interrobang)
 - [DOCUMENTAZIONE](#DOCUMENTAZIONE-memo)
 - [AUTORI](#AUTORI-busts_in_silhouette)
+- [FILE RESTITUITI] (#FILERESTITUITI)
 
 
 # INTRODUZIONE 
@@ -108,6 +109,9 @@ Utilizzando il frameword JUnit abbiamo implementato 2 test che si possono consul
 
 # DOCUMENTAZIONE :memo:
 Tutto il progetto è documentato in javadoc
+
+# FILE RESTITUITI  
+E' possibile visualizzare i vari file in formato json restituiti al lancio delle varie rotte [qui.]()
 
 # AUTORI :busts_in_silhouette:
 Il seguente progett è stato realizzato da :
