@@ -9,6 +9,7 @@
 - [CONFIGURAZIONE](#CONFIGURAZIONE)
 - [ROTTE](#ROTTE) 
 - [PARAMETRI](#PARAMETRI)
+- [TEST](#TEST)
 
 
 # INTRODUZIONE 
@@ -17,13 +18,19 @@ Applicazione Java che utilizza le API di Twitter per fare ricerche in base ad un
 Lo scopo principale dell’applicazione è quello di ricercare tweet attraverso un hashtag dato in input dall’utente come parametro. È possibile inoltre decidere il numero di tweet visualizzabili dando un valore al parametro “count” altrimenti viene passato il valore di default che corrisponde a 100 (che è anche il massimo valore utilizzabile). È possibile come richiesto nelle specifiche del progetto filtrare i risultati ottenuti e visualizzare delle statistiche.
 
 # FILTRI 
-GIORNO, MESE, ANNO: vengono restituiti i tweet postati in quella determinata data
-HASHTAG: vengono restituiti i tweet che al loro interno contengono un altro hashtag  definito come parametro
+TIPO DI FILTRO | COSA RESTITUISCE
+------------ | -------------
+GIORNO, MESE, ANNO: |  vengono restituiti i tweet postati in quella determinata data
+HASHTAG: | vengono restituiti i tweet che al loro interno contengono un altro hashtag  definito come parametro
 
 # STATISTICHE 
-  GIORNI: viene restituito il numero e la percentuale di tweet pubblicati nei diversi giorni della settimana.
-	ORA:  vengono restituite statistiche su la pubblicazione nelle diverse fasce orarie giornaliere.
-	HASHTAG: vengono restituite statistiche sulla ricorrenza di quell’hashtag all’interno dei tweet.
+
+TIPO DI STATISTICA | COSA RESTITUISCE 
+------------ | -------------
+GIORNI: | viene restituito il numero e la percentuale di tweet pubblicati nei diversi giorni della settimana.
+ORA: | vengono restituite statistiche su la pubblicazione nelle diverse fasce orarie giornaliere.
+HASHTAG:| vengono restituite statistiche sulla ricorrenza di quell’hashtag all’interno dei tweet.
+
 # CONFIGURAZIONE 
 Per visionare il progetto è necessario clonare la repository situata su GitHub in locale oppure è possibile eseguire tramite terminale il seguente comando 
 “ git clone https://github.com/luigiciuf/PROGETTO-OOP”
@@ -32,21 +39,55 @@ http://localhost:8080
 
 NOTA: in caso di problemi per l’utilizzo della porta 8080 è possibile modificarla attraverso il file presente in src/main/resourses/application.proprerties andando a definire una porta che al momento non è utilizzata.
 # ROTTE
-1)	Get /tweet/get  restituisce un JSONObject contenente tutte le informazioni relative ai dati di un tweet 
-2)	Get /hastag_filter restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito 
-3)	Get /day_filter restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita
-4)	Get /tweet/timestats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata 
-5)	Get /tweet/daystats restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
-6)	Get /tweet/hashtagstats restituisce una Hashmap contenente il numero di tweet contenenti l’hashtag inserito  e  calcola …..
+ROTTA | COSA RESTITUISCE
+------------ | -------------
+1)GET:  /tweet/get  | restituisce un JSONObject contenente tutte le informazioni relative ai dati di un tweet 
+2)GET:  /hashtag_filter  | restituisce un JSONObject contenente tutti i tweet filtrati con l’hashtag inserito 
+3)GET: /day_filter   |   restituisce un JSONObject contenente tutti i tweet filtrati in base al giorno contententi la data inserita
+4)GET: /tweet/timestats  |   restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nelle diverse fasce orarie della giornata 
+5)GET: /tweet/daystats    | restituisce un JSONObject contenente le statistiche di tutti i tweet pubblicati nei vari giorni della settimana 
+6)GET: /tweet/hashtagsstats | restituisce una HashMap contentente la ricorrenza degli hashtag all'interno dei vari tweet
+
+
 # PARAMETRI 
-1)	Hashtag ,count, di tipo stringa e int sono richiesti per una ricerca specifica altrimenti questi avranno il valore di defaul (univpm, 5).
-2)	Hashtag, di tipo stringa è un parametro richiesto per poter filtrare i tweet 
-3)	Day, Mount, Year , tutti di tipo int sono parametri obbligatori da inserire per poter efettuare na ricerca filtratata dei tweet
-4)	Nessun parametro richiesto
-5)	Nessun parametro richiesto
-6)	Nessun parametro richiesto
+
+PARAMETRI | TIPO | RICHIESTI | OBBLIGATORI
+------------ | ------------- | ------------ | -------------
+1)Hashtag, Count | String, Int | SI | No
+2)Hashtag | String | SI | SI 
+3)Day,Mounth,Year | Int,Int,Int | SI | SI
+4)Non richiesti | --- | --- | ---
+5)Non richiesti | --- | --- | ---
+6)Non richiesti | --- | --- | ---
+
+RISULTATI DELLE RICERCHE: 
+
+1) DATI TWEET
+
+![1 rotta](https://user-images.githubusercontent.com/92534853/147735838-53b85865-11ac-474e-a4b5-2c69827d983e.png)
+
+2) TWEET FILTRATI IN BASE ALL'HASHTAG INSERITO 
+
+![hashtag filtro](https://user-images.githubusercontent.com/92534853/147735905-5bc65135-4058-4079-b80a-479579e1b756.png)
+
+3) TWEET FILTRATI IN BASE ALLA DATA INSERITA
+
+![tweet filtr data](https://user-images.githubusercontent.com/92534853/147735940-30e4b904-1a4e-48b6-9098-d4c8d8d40dce.png)
+
+4) STATISTICHE TWEET IN BASE ALLE FASCE ORARIE
+
+![fasce orarie](https://user-images.githubusercontent.com/92534853/147736004-a25d57c7-95dd-49dc-8669-e25b5659b64c.png)
+
+5)STATISTICHE PUBBLICAZIONE TWEET NEI GIORNI DELLA SETTIMANA
+
+![statische giorni](https://user-images.githubusercontent.com/92534853/147736036-2371d9d6-e46e-41b3-a61f-a30877bd2fe2.png)
+
+6) INSERIRE SCREEN HASHTAGSTATS
 
 
+
+
+# TEST
 
 
 
