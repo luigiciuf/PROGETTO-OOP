@@ -2,25 +2,23 @@ package com.progettounivpm.SpringAPP.model;
 
 import java.util.ArrayList;
 import org.json.simple.JSONObject;
-/**
- * <b> Classe </b> Tweet
 
+/**
+ * <b> Classe </b> che modella Tweet, con solo i dati che potrebbero essere usati per statistiche e filtri.
  */
 
 public class Tweet {
 	/**
-	 * Data creazione tweet
+	 * Data creazione tweet.
 	 */
 	private DataOra created_at;
 	/**
 	 * Elenco degli altri hastag nel tweet oltre quello indicato.									
 	 */
-	
 	private ArrayList<String> hashtags;
 	/**
-	 *  Lingua del tweet.
-	 */
-	 										
+	 * Lingua del tweet.
+	 */										
 	private String isolanguage_code;
 	/**
 	 * Recente o in Evidenza, dovrebbero essere le due sezioni dove compaiono i tweet.
@@ -39,11 +37,13 @@ public class Tweet {
 	 */										
 	private DataOra created_at_user;
 	/**
-	 * Quanti altri tweet ha fatto l'utente che ha postato il tweet
+	 * Quanti altri tweet ha fatto l'utente che ha postato il tweet.
 	 */										
 	private String statuses_count;			
 	
-	
+	/**
+	 * <b>Costruttore</b> non ridefinito visto che usiamo i vari metodi set.
+	 */
 	public Tweet() {
 		
 	}
@@ -52,7 +52,7 @@ public class Tweet {
 		return created_at;
 	}
 	/**
-	 *  Metodo che utilizza toString di DataOra per riottenere una Stringa.
+	 *  <b>Metodo</b> che utilizza toString di DataOra per riottenere una Stringa.
 	 */
 	public String getCreated_at_Text() {
 		return created_at.toString();
@@ -64,9 +64,8 @@ public class Tweet {
 		return hashtags;
 	}
 	/**
-	 * Metodo per riottenere una stringa con tutti gli hashtag.
+	 * <b>Metodo</b> per riottenere una stringa con tutti gli hashtag.
 	 */
-	// Metodo per riottenere una stringa con tutti gli hashtag.
 	public String getHashtagsText() {
 		String s = null;
 		for (String str: hashtags) {
@@ -123,9 +122,8 @@ public class Tweet {
 		this.statuses_count = statuses_count;
 	}
 	/**
-	 * <b> Metodo </b> toString ridefinito per essere utilizzato
+	 * <b>Metodo</b> toString ridefinito per ottenere una stringa con tutti i dati del tweet.
 	 */
-	
 	public String toString() {
 		return ("\n"+"Created at: "+getCreated_at_Text()+
 				"\n"+"Location: "+getLocation()+
@@ -138,8 +136,7 @@ public class Tweet {
 	}	
 
 	/**
-	 * <b> Metodo </b> toJSONObject che restituisce un jsonObject con tutte le variabuli interne della classe tweet
-	 * 
+	 * <b> Metodo </b> toJSONObject che restituisce un jsonObject con tutte le variabili interne della classe tweet.
 	 * @return <JoTweet> JSONObject
 	 */
 	public JSONObject toJSONObject() {

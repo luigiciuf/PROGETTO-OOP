@@ -2,22 +2,22 @@ package com.progettounivpm.SpringAPP.statistics;
 
 import java.util.HashMap;
 import org.json.simple.JSONObject;
+
 /**
- * <b> Interfaccia </b> Statistic che definisce viene utilizzata per la formazione delle statistiche
+ * <b>Interfaccia</b> Statistic che definisce i metodi usati per le statistiche.
  * @author Luigi Ciuffreda
  * @author Federico Rossolini
- *
  */
-
 public interface Statistic {
+	
 	/**
-	 * metodo astratto che verr√† sovrascritto dalle varie classi 
+	 * Metodo astratto che verr‡†sovrascritto dalle varie classi. 
 	 * @return JSONObject 
 	 */
-	
 	public abstract JSONObject statistic();
+	
 	/**
-	 * metodo astratto che verr√† sovrascritto dalle varie classi 
+	 * Metodo astratto che verr‡†sovrascritto dalle varie classi. 
 	 * @return Hashmap 
 	 */
 	public abstract HashMap statistic1();

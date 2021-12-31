@@ -25,7 +25,6 @@ import com.progettounivpm.SpringAPP.statistics.TimeStats;
  * @author Luigi Ciuffreda
  * @author Federico Rossolini
  */
-
 @RestController
 public class Controller {
 	
@@ -45,6 +44,9 @@ public class Controller {
 	 * @return Un JSONObject contenente i tweet ottenuti dal parsing.
 	 * @throws HashtagInexistentException Eccezione, se la chiamata API (usando l'hashtag specificato come parametro) non restituisce nulla.
 	 * @throws IOException
+	 * @see TwitterServiceImpl#getJSONTweets(String, int)
+	 * @see TwitterServiceImpl#getTweetInfo(JSONObject)
+	 * @see TwitterServiceImpl#toJSON(ArrayList)
 	 */
 	@GetMapping(value= "/tweet/get")
 	public ResponseEntity<Object> getTweetInfo( 
@@ -64,7 +66,8 @@ public class Controller {
 	 * <b>Rotta</b> che visualizza i tweet contenenti uno specifico hashtag.
 	 * @param hashtag da cercare nei tweet.
 	 * @return Un JSONObject contenete i tweet filtrati.
-	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.  
+	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.
+	 * @see HashtagFilter#filter()  
 	 */
 	@GetMapping(value= "/hastag_filter") 
 	public ResponseEntity<Object> filtroHashtag (
@@ -82,9 +85,10 @@ public class Controller {
 	 * @param year di tipo int, es 2021.
 	 * @return Un JSONObject contenete i tweet filtrati.
 	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.
+	 * @see TemporalPeriodFilter#filter()
 	 */
 	@GetMapping(value= "/day_filter")
-	public ResponseEntity<Object> filter(
+	public ResponseEntity<Object> filtoGiorni (
 			@RequestParam (name= "day") int day,
 			@RequestParam (name= "month")String month,
 			@RequestParam (name= "year")int year) 
@@ -98,6 +102,7 @@ public class Controller {
 	 * <b>Rotta</b> che visualizza le varie statiche sulle fascie orarie in cui sono stati postati i tweet.
 	 * @return Un JSONObject contenete le statistiche.
 	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.
+	 * @see TimeStats#statistic()
 	 */
 	@GetMapping(value = "/tweet/timestats")
 	public ResponseEntity<Object> timestats() throws TweetsIsEmptyException{
@@ -110,9 +115,10 @@ public class Controller {
 	 * <b>Rotta</b> che visualizza le varie statiche sui giorni della settimana in cui sono stati postati i tweet.
 	 * @return Un JSONObject contenete le statistiche.
 	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.
+	 * @see DayStats#statistic()
 	 */
 	@GetMapping(value= "/tweet/daystats")
-	public ResponseEntity<Object> stampastats() throws TweetsIsEmptyException{
+	public ResponseEntity<Object> daystats() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		DayStats daystats = new DayStats(tweets);
 		return new ResponseEntity<Object>(daystats.statistic(),HttpStatus.OK);
@@ -122,16 +128,18 @@ public class Controller {
 	 * <b>Rotta</b> che visualizza le varie statiche sui vari hashtag usati.
 	 * @return Un JSONObject contenete le statistiche.
 	 * @throws TweetsIsEmptyException Eccezione, se prima non è stata lanciata la rotta /tweet/get.
+	 * @see HashtagsStats#statistic()
+	 * @see HashtagsStats#statistic1()
 	 */
 	@GetMapping(value= "/tweet/hashtagstats")
-	public ResponseEntity<Object> hs() throws TweetsIsEmptyException{
+	public ResponseEntity<Object> hashtagstats() throws TweetsIsEmptyException{
 		TweetsisEmpty(tweets);
 		HashtagsStats statistiche = new HashtagsStats(tweets);
 		return new ResponseEntity<Object>(statistiche.statistic(), HttpStatus.OK);	
 	}
 	
 	/**
-	 * Metodo ausiliario, usato in tutte le rotte (eccetto la prima) per verificare se sono stati scaricati tweet.
+	 * Metodo ausiliario, usato in tutte le rotte (eccetto la prima) per verificare se sono stati scaricati tweet, altimenti lancia TweetsIsEmptyException.
 	 * @param tweets
 	 * @throws TweetsIsEmptyException
 	 */

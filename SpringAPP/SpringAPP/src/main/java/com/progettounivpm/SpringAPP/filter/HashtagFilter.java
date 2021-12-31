@@ -23,7 +23,7 @@ public class HashtagFilter implements Filter{
 
 	/**
 	 * <b>Costruttore</b>
-	 * @param hashtag Stringa usata come parametro per filtrare i tweet
+	 * @param hashtag Stringa usata come parametro per filtrare i tweet.
 	 * @param tweets ArrayList che contiene tutti i tweet da filtrare.
 	 */
 	public HashtagFilter(String hashtag, ArrayList<Tweet> tweets) {

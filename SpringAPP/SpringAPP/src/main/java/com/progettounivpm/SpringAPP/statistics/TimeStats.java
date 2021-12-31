@@ -6,33 +6,29 @@ import org.json.simple.JSONObject;
 
 import com.progettounivpm.SpringAPP.model.DataOra;
 import com.progettounivpm.SpringAPP.model.Tweet;
+
 /**
- *  <b>Classe</b> TimeStats che implementa Statistic che restituisce le statistiche delle varie fasce orarie giornaliere
+ *  <b>Classe</b> TimeStats che implementa Statistic e che restituisce le statistiche delle varie fasce orarie giornaliere.
  * @author Luigi Ciuffreda
  * @author Federico Rossolini
- *
  */
-
 public class TimeStats implements Statistic{
 	/**
-	 * ArrayList che contiene tutti i tweet
+	 * ArrayList che contiene tutti i tweet.
 	 */
 	private ArrayList<Tweet> tweets;
-	
+
 	/**
-	 * costruttore TimeStats che richiede come parametro un arraylist
+	 * Costruttore TimeStats che richiede come parametro un arraylist.
 	 * @param tweets
 	 */
 	public TimeStats(ArrayList<Tweet> tweets) {
 		this.tweets = tweets;
 	}
 	/**
-	 *  <b>Metodo</b> statistic che restutuisce un JSONObject contenente le statistiche delle varie fascie orarie giornaliere
-	 *  @param <Fascia1,Fascia2,Fascia3> contatori utilizzati per le statistiche 
-	 *  @see DataOra DataOra utilizzata per modellare la data
-	 *  @return JSONObject contenente tutte le statistiche 
+	 *  <b>Metodo</b> statistic che restutuisce un JSONObject contenente le statistiche delle varie fascie orarie giornaliere.
+	 *  @return JSONObject contenente tutte le statistiche, 
 	 */
-
 	@Override
 	public JSONObject statistic() {
 		JSONObject obj = new JSONObject();

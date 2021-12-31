@@ -19,27 +19,27 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import com.progettounivpm.SpringAPP.model.Tweet;
+
 /**
- * <b> Classe </b> TTwitterServiceImpl che implementa TwitterService
+ * <b> Classe </b> TwitterServiceImpl che implementa TwitterService.
  * @author Luigi Ciuffreda
  * @author Federico Rossolini
- *
  */
-
 @Service 
 public class TwitterServiceImpl implements TwitterService{
+	
 	/**
-	 * @param <url> url che contiene l'url dell'API da utilizzare
+	 * * URL base, da usare per la chiamata.
 	 */
-
 	private String url= "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=";
 	//private String ApiKey = ""; TODO: Da implementare poi quando sostituiremo il url
-	/**
-	 * <b> Metodo </b> getJSONTweets che effettua la chiamata all'api 
-	 * @param <tweets> utilizzato per contenere tutte i tweet 
-	 * @return JSONObject contenente tutti i tweet estratti dalla chiamata all'api
-	 */
 	
+	/**
+	 * <b>Metodo</b> getJSONTweets che effettua la chiamata API. 
+	 * @param hashtag da usare per costruire l'URL.
+	 * @param count da usare per costruire l'URL.
+	 * @return JSONObject contenente tutti i tweet estratti dalla chiamata all'api.
+	 */
 	@Override
 	public JSONObject getJSONTweets(String hashtag,int count) throws IOException {
 		
@@ -72,10 +72,11 @@ public class TwitterServiceImpl implements TwitterService{
 		}
 		return tweets;
 	}
+	
 	/**
-	 * <b> Metodo </b> getTweetInfo che fa il parsing del JSONObject
-	 * @param <tweets> Array list che contiene tutti i tweet
-	 * @return <tweets> array list contenente tutte le info da noi richieste dei tweet
+	 * <b>Metodo</b> getTweetInfo che fa il parsing del JSONObject.
+	 * @param jsonTweets un JSONObject contenente il file JSON contenente i tweet ottenuti dalla chiamata all'API.
+	 * @return tweets ArrayList contenente tutte le info da noi richieste dei tweet.
 	 */
 	@Override
 	public ArrayList<Tweet> getTweetInfo(JSONObject jsonTweets) {
@@ -116,10 +117,11 @@ public class TwitterServiceImpl implements TwitterService{
 		}
 		return tweets;
 	}
+	
 	/**
-	 * <b> Metodo </b>toJSON  usato per l'output
-	 * @return <oggettoFiltrato> JSONObject contenente tutti i tweet ma filtrati in base alle nostre esigenze
-	 * 
+	 * <b> Metodo </b>toJSON usato per l'output. 
+	 * Crea un JSONObject con Key "Tweets" e con valore un JSONArray contenente svariati JSONObject (i tweet convertiti da ArrayList a JSONObject).
+	 * @return Un JSONObject contenente tutti i tweet.
 	 */
 	@Override
 	public JSONObject toJSON(ArrayList<Tweet> tweets) {
@@ -134,13 +136,10 @@ public class TwitterServiceImpl implements TwitterService{
 		return oggettoFiltrato;	
 	}	
 	
-	/* Metodo per leggere un file locale.
-	 * Restituisce L'Array List con tutti i tweet nel file.
-	 */
 	/**
-	 * <b> Metodo </b> readFile utilizzato per leggere un file da locare 
-	 * @param path stringa che contiene il percorso file 
-	 * @return array list con tutti i tweet contenuti nel file
+	 * <b>Metodo</b> readFile utilizzato per leggere un file da locale.
+	 * @param path stringa che contiene il percorso file. 
+	 * @return ArrayList con tutti i tweet contenuti nel file.
 	 */
 	public ArrayList<Tweet> readFile(String path) {
 		JSONParser jParser = new JSONParser();

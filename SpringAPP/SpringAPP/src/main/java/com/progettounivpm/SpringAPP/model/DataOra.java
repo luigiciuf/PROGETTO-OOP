@@ -1,13 +1,10 @@
 package com.progettounivpm.SpringAPP.model;
 
 /**
- * <b> Classe </b> DataOra che modella la data con l'orario 
+ * <b>Classe</b> DataOra che modella la data e l'orario. 
  * @author Luigi Ciuffreda
  * @author Federico Rossolini
- *
  */
-
-
 public class DataOra {
 	private String giornosettimana;
 	private int giorno;
@@ -17,9 +14,8 @@ public class DataOra {
 	private int minuti;
 	
 	/**
-	 * costruttore che converte una stringa di questo tipo "Tue Dec 14 17:32:42 +0000 2021"
+	 * <b>Costruttore</b> che converte una stringa di questo tipo: "Tue Dec 14 17:32:42 +0000 2021"
 	 */
-
 	public DataOra(String str) {
 		String s [] = str.split(" ");
 		this.giornosettimana = s[0];
@@ -52,7 +48,7 @@ public class DataOra {
 	}
 	
 	/**
-	 * metodo per riottenere una stringa senza dati superflui
+	 * <b>Metodo</b> per riottenere una stringa senza dati superflui.
 	 */
 	public String toString() {
 		String text_ora;
