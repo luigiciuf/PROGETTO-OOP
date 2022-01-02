@@ -122,10 +122,10 @@ E' possibile visualizzare i vari file in formato json restituiti al lancio delle
 
 # AUTORI :busts_in_silhouette:
 Il seguente progett è stato realizzato da :
-* [Federico Rossolini](https://github.com/Fede-Rosso): filtri,eccezioni,service , test
-* [Luigi Ciuffreda](https://github.com/luigiciuf): statitiche, readme ,controller, javadoc
+* [Federico Rossolini](https://github.com/Fede-Rosso): filtri,eccezioni,service ,controller,test,model, javadoc. 
+* [Luigi Ciuffreda](https://github.com/luigiciuf): statitiche, readme ,controller, javadoc, service,test, javadoc.
 
-Il seguente progetto è stato sviluppato in circa 3 settimane di lavoro documentando il tutto su git hub con i vari commit che ci hanno permesso di poter effettuare dei confronti ed eventuali correzzioni di coppia. Tutte le specifiche richieste sono state implementate aggiungendo anche un plus sulla parte delle statistiche dei tweet nelle varie fasce orarie giornaliere.
+Il seguente progetto è stato sviluppato in circa 3 settimane di lavoro documentando il tutto su git hub con i vari commit che ci hanno permesso di poter effettuare dei confronti ed eventuali correzioni di coppia. Tutte le specifiche richieste sono state implementate aggiungendo anche un plus sulla parte delle statistiche dei tweet nelle varie fasce orarie giornaliere.
 Si ringrazia il professor Emanuele Frontoni e tutti i suoi collaboratori per la disponibilità e i consigli.
 
 
